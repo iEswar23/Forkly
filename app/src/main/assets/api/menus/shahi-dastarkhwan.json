@@ -1,0 +1,529 @@
+{
+  "restaurantId": "shahi-dastarkhwan",
+  "sections": [
+    {
+      "name": "Biryani",
+      "items": [
+        {
+          "id": "shahi-dastarkhwan-01",
+          "name": "Hyderabadi Chicken Dum Biryani",
+          "description": "Long-grain basmati and tender chicken slow-cooked on dum with saffron, fried onions and mint. Served with mirchi ka salan and raita.",
+          "price": 329,
+          "isVeg": false,
+          "isBestseller": true,
+          "emoji": "🍛",
+          "customizations": [
+            {
+              "id": "portion",
+              "title": "Choose portion",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "portion_0",
+                  "name": "Regular (serves 1)",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "portion_1",
+                  "name": "Full (serves 2)",
+                  "priceDelta": 120
+                },
+                {
+                  "id": "portion_2",
+                  "name": "Family pack (serves 3–4)",
+                  "priceDelta": 420
+                }
+              ]
+            },
+            {
+              "id": "biryani_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "biryani_extras_0",
+                  "name": "Extra raita",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "biryani_extras_1",
+                  "name": "Extra mirchi ka salan",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "biryani_extras_2",
+                  "name": "Boiled egg",
+                  "priceDelta": 20
+                },
+                {
+                  "id": "biryani_extras_3",
+                  "name": "Double masala",
+                  "priceDelta": 35
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shahi-dastarkhwan-02",
+          "name": "Mutton Dum Biryani",
+          "description": "Kachchi-style goat biryani layered with aged basmati, kewra and ghee, sealed and cooked on dum for hours.",
+          "price": 429,
+          "isVeg": false,
+          "isBestseller": true,
+          "emoji": "🍖",
+          "customizations": [
+            {
+              "id": "portion",
+              "title": "Choose portion",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "portion_0",
+                  "name": "Regular (serves 1)",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "portion_1",
+                  "name": "Full (serves 2)",
+                  "priceDelta": 120
+                },
+                {
+                  "id": "portion_2",
+                  "name": "Family pack (serves 3–4)",
+                  "priceDelta": 420
+                }
+              ]
+            },
+            {
+              "id": "biryani_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "biryani_extras_0",
+                  "name": "Extra raita",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "biryani_extras_1",
+                  "name": "Extra mirchi ka salan",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "biryani_extras_2",
+                  "name": "Boiled egg",
+                  "priceDelta": 20
+                },
+                {
+                  "id": "biryani_extras_3",
+                  "name": "Double masala",
+                  "priceDelta": 35
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shahi-dastarkhwan-03",
+          "name": "Chicken 65 Biryani",
+          "description": "Fragrant biryani rice topped with crisp, curry-leaf tempered Chicken 65.",
+          "price": 359,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🍗",
+          "customizations": [
+            {
+              "id": "portion",
+              "title": "Choose portion",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "portion_0",
+                  "name": "Regular (serves 1)",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "portion_1",
+                  "name": "Full (serves 2)",
+                  "priceDelta": 120
+                },
+                {
+                  "id": "portion_2",
+                  "name": "Family pack (serves 3–4)",
+                  "priceDelta": 420
+                }
+              ]
+            },
+            {
+              "id": "biryani_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "biryani_extras_0",
+                  "name": "Extra raita",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "biryani_extras_1",
+                  "name": "Extra mirchi ka salan",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "biryani_extras_2",
+                  "name": "Boiled egg",
+                  "priceDelta": 20
+                },
+                {
+                  "id": "biryani_extras_3",
+                  "name": "Double masala",
+                  "priceDelta": 35
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shahi-dastarkhwan-04",
+          "name": "Paneer Dum Biryani",
+          "description": "Malai paneer cubes in a saffron-scented biryani with caramelised onions.",
+          "price": 289,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍛",
+          "customizations": [
+            {
+              "id": "portion",
+              "title": "Choose portion",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "portion_0",
+                  "name": "Regular (serves 1)",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "portion_1",
+                  "name": "Full (serves 2)",
+                  "priceDelta": 120
+                },
+                {
+                  "id": "portion_2",
+                  "name": "Family pack (serves 3–4)",
+                  "priceDelta": 420
+                }
+              ]
+            },
+            {
+              "id": "biryani_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "biryani_extras_0",
+                  "name": "Extra raita",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "biryani_extras_1",
+                  "name": "Extra mirchi ka salan",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "biryani_extras_2",
+                  "name": "Boiled egg",
+                  "priceDelta": 20
+                },
+                {
+                  "id": "biryani_extras_3",
+                  "name": "Double masala",
+                  "priceDelta": 35
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shahi-dastarkhwan-05",
+          "name": "Veg Dum Biryani",
+          "description": "Seasonal vegetables and basmati cooked on dum with whole spices and mint.",
+          "price": 249,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥕",
+          "customizations": [
+            {
+              "id": "portion",
+              "title": "Choose portion",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "portion_0",
+                  "name": "Regular (serves 1)",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "portion_1",
+                  "name": "Full (serves 2)",
+                  "priceDelta": 120
+                },
+                {
+                  "id": "portion_2",
+                  "name": "Family pack (serves 3–4)",
+                  "priceDelta": 420
+                }
+              ]
+            },
+            {
+              "id": "biryani_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "biryani_extras_0",
+                  "name": "Extra raita",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "biryani_extras_1",
+                  "name": "Extra mirchi ka salan",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "biryani_extras_2",
+                  "name": "Boiled egg",
+                  "priceDelta": 20
+                },
+                {
+                  "id": "biryani_extras_3",
+                  "name": "Double masala",
+                  "priceDelta": 35
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shahi-dastarkhwan-06",
+          "name": "Egg Biryani",
+          "description": "Masala-roasted boiled eggs tucked into spicy Hyderabadi biryani rice.",
+          "price": 229,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🥚",
+          "customizations": [
+            {
+              "id": "portion",
+              "title": "Choose portion",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "portion_0",
+                  "name": "Regular (serves 1)",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "portion_1",
+                  "name": "Full (serves 2)",
+                  "priceDelta": 120
+                },
+                {
+                  "id": "portion_2",
+                  "name": "Family pack (serves 3–4)",
+                  "priceDelta": 420
+                }
+              ]
+            },
+            {
+              "id": "biryani_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "biryani_extras_0",
+                  "name": "Extra raita",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "biryani_extras_1",
+                  "name": "Extra mirchi ka salan",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "biryani_extras_2",
+                  "name": "Boiled egg",
+                  "priceDelta": 20
+                },
+                {
+                  "id": "biryani_extras_3",
+                  "name": "Double masala",
+                  "priceDelta": 35
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Starters",
+      "items": [
+        {
+          "id": "shahi-dastarkhwan-07",
+          "name": "Chicken 65",
+          "description": "Crisp chicken bites tossed with red chilli, curry leaves and hung-curd marinade.",
+          "price": 269,
+          "isVeg": false,
+          "isBestseller": true,
+          "emoji": "🍗",
+          "customizations": []
+        },
+        {
+          "id": "shahi-dastarkhwan-08",
+          "name": "Apollo Fish",
+          "description": "Boneless fish fried and tossed in a tangy, spicy Hyderabadi sauce.",
+          "price": 329,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🐟",
+          "customizations": []
+        },
+        {
+          "id": "shahi-dastarkhwan-09",
+          "name": "Mutton Seekh Kebab (4 pcs)",
+          "description": "Minced mutton with ginger, green chilli and garam masala, chargrilled on skewers.",
+          "price": 349,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🍢",
+          "customizations": []
+        },
+        {
+          "id": "shahi-dastarkhwan-10",
+          "name": "Paneer Majestic",
+          "description": "Paneer fingers in a creamy, mildly spiced yogurt and curry-leaf tempering.",
+          "price": 249,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🧀",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Curries & Breads",
+      "items": [
+        {
+          "id": "shahi-dastarkhwan-11",
+          "name": "Butter Chicken",
+          "description": "Tandoori chicken simmered in a velvety tomato, butter and fenugreek gravy.",
+          "price": 319,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🍲",
+          "customizations": []
+        },
+        {
+          "id": "shahi-dastarkhwan-12",
+          "name": "Mutton Nihari",
+          "description": "Slow-cooked overnight mutton stew with bone marrow and warming spices.",
+          "price": 349,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🥘",
+          "customizations": []
+        },
+        {
+          "id": "shahi-dastarkhwan-13",
+          "name": "Dal Fry",
+          "description": "Yellow lentils tempered with ghee, garlic, cumin and dried red chilli.",
+          "price": 179,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥣",
+          "customizations": []
+        },
+        {
+          "id": "shahi-dastarkhwan-14",
+          "name": "Butter Naan",
+          "description": "Soft tandoor-baked naan brushed with butter.",
+          "price": 55,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥙",
+          "customizations": []
+        },
+        {
+          "id": "shahi-dastarkhwan-15",
+          "name": "Rumali Roti",
+          "description": "Paper-thin handkerchief bread, perfect with kebabs.",
+          "price": 35,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥙",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "id": "shahi-dastarkhwan-16",
+          "name": "Double Ka Meetha",
+          "description": "Hyderabadi bread pudding soaked in saffron milk, topped with dry fruits.",
+          "price": 119,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🍮",
+          "customizations": []
+        },
+        {
+          "id": "shahi-dastarkhwan-17",
+          "name": "Qubani Ka Meetha",
+          "description": "Stewed apricots with a dollop of fresh cream, a Nizami classic.",
+          "price": 139,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍑",
+          "customizations": []
+        },
+        {
+          "id": "shahi-dastarkhwan-18",
+          "name": "Phirni",
+          "description": "Chilled ground-rice pudding with cardamom and pistachio, set in a clay pot.",
+          "price": 99,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍚",
+          "customizations": []
+        }
+      ]
+    }
+  ]
+}

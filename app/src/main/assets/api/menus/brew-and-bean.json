@@ -1,0 +1,686 @@
+{
+  "restaurantId": "brew-and-bean",
+  "sections": [
+    {
+      "name": "Hot Coffee",
+      "items": [
+        {
+          "id": "brew-and-bean-01",
+          "name": "Cappuccino",
+          "description": "Double shot of our Chikmagalur house blend with velvety microfoam.",
+          "price": 179,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "☕",
+          "customizations": [
+            {
+              "id": "cup",
+              "title": "Cup size",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "cup_0",
+                  "name": "Regular",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "cup_1",
+                  "name": "Large",
+                  "priceDelta": 60
+                }
+              ]
+            },
+            {
+              "id": "milk",
+              "title": "Milk",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "milk_0",
+                  "name": "Regular milk",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "milk_1",
+                  "name": "Oat milk",
+                  "priceDelta": 50
+                },
+                {
+                  "id": "milk_2",
+                  "name": "Almond milk",
+                  "priceDelta": 50
+                }
+              ]
+            },
+            {
+              "id": "coffee_extras",
+              "title": "Extras",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "coffee_extras_0",
+                  "name": "Extra shot",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "coffee_extras_1",
+                  "name": "Hazelnut syrup",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "coffee_extras_2",
+                  "name": "Vanilla syrup",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "coffee_extras_3",
+                  "name": "Whipped cream",
+                  "priceDelta": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "brew-and-bean-02",
+          "name": "Café Latte",
+          "description": "Espresso with steamed milk and a thin layer of foam.",
+          "price": 189,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "☕",
+          "customizations": [
+            {
+              "id": "cup",
+              "title": "Cup size",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "cup_0",
+                  "name": "Regular",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "cup_1",
+                  "name": "Large",
+                  "priceDelta": 60
+                }
+              ]
+            },
+            {
+              "id": "milk",
+              "title": "Milk",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "milk_0",
+                  "name": "Regular milk",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "milk_1",
+                  "name": "Oat milk",
+                  "priceDelta": 50
+                },
+                {
+                  "id": "milk_2",
+                  "name": "Almond milk",
+                  "priceDelta": 50
+                }
+              ]
+            },
+            {
+              "id": "coffee_extras",
+              "title": "Extras",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "coffee_extras_0",
+                  "name": "Extra shot",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "coffee_extras_1",
+                  "name": "Hazelnut syrup",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "coffee_extras_2",
+                  "name": "Vanilla syrup",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "coffee_extras_3",
+                  "name": "Whipped cream",
+                  "priceDelta": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "brew-and-bean-03",
+          "name": "Flat White",
+          "description": "Ristretto shots with silky steamed milk.",
+          "price": 199,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "☕",
+          "customizations": [
+            {
+              "id": "cup",
+              "title": "Cup size",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "cup_0",
+                  "name": "Regular",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "cup_1",
+                  "name": "Large",
+                  "priceDelta": 60
+                }
+              ]
+            },
+            {
+              "id": "milk",
+              "title": "Milk",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "milk_0",
+                  "name": "Regular milk",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "milk_1",
+                  "name": "Oat milk",
+                  "priceDelta": 50
+                },
+                {
+                  "id": "milk_2",
+                  "name": "Almond milk",
+                  "priceDelta": 50
+                }
+              ]
+            },
+            {
+              "id": "coffee_extras",
+              "title": "Extras",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "coffee_extras_0",
+                  "name": "Extra shot",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "coffee_extras_1",
+                  "name": "Hazelnut syrup",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "coffee_extras_2",
+                  "name": "Vanilla syrup",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "coffee_extras_3",
+                  "name": "Whipped cream",
+                  "priceDelta": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "brew-and-bean-04",
+          "name": "Americano",
+          "description": "Espresso lengthened with hot water.",
+          "price": 149,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "☕",
+          "customizations": [
+            {
+              "id": "cup",
+              "title": "Cup size",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "cup_0",
+                  "name": "Regular",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "cup_1",
+                  "name": "Large",
+                  "priceDelta": 60
+                }
+              ]
+            },
+            {
+              "id": "milk",
+              "title": "Milk",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "milk_0",
+                  "name": "Regular milk",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "milk_1",
+                  "name": "Oat milk",
+                  "priceDelta": 50
+                },
+                {
+                  "id": "milk_2",
+                  "name": "Almond milk",
+                  "priceDelta": 50
+                }
+              ]
+            },
+            {
+              "id": "coffee_extras",
+              "title": "Extras",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "coffee_extras_0",
+                  "name": "Extra shot",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "coffee_extras_1",
+                  "name": "Hazelnut syrup",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "coffee_extras_2",
+                  "name": "Vanilla syrup",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "coffee_extras_3",
+                  "name": "Whipped cream",
+                  "priceDelta": 30
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cold Brews",
+      "items": [
+        {
+          "id": "brew-and-bean-05",
+          "name": "Classic Cold Brew",
+          "description": "Steeped for 18 hours for a smooth, low-acid brew.",
+          "price": 199,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🧊",
+          "customizations": [
+            {
+              "id": "cup",
+              "title": "Cup size",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "cup_0",
+                  "name": "Regular",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "cup_1",
+                  "name": "Large",
+                  "priceDelta": 60
+                }
+              ]
+            },
+            {
+              "id": "milk",
+              "title": "Milk",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "milk_0",
+                  "name": "Regular milk",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "milk_1",
+                  "name": "Oat milk",
+                  "priceDelta": 50
+                },
+                {
+                  "id": "milk_2",
+                  "name": "Almond milk",
+                  "priceDelta": 50
+                }
+              ]
+            },
+            {
+              "id": "coffee_extras",
+              "title": "Extras",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "coffee_extras_0",
+                  "name": "Extra shot",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "coffee_extras_1",
+                  "name": "Hazelnut syrup",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "coffee_extras_2",
+                  "name": "Vanilla syrup",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "coffee_extras_3",
+                  "name": "Whipped cream",
+                  "priceDelta": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "brew-and-bean-06",
+          "name": "Vietnamese Iced Coffee",
+          "description": "Strong drip coffee over condensed milk and ice.",
+          "price": 219,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥤",
+          "customizations": [
+            {
+              "id": "cup",
+              "title": "Cup size",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "cup_0",
+                  "name": "Regular",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "cup_1",
+                  "name": "Large",
+                  "priceDelta": 60
+                }
+              ]
+            },
+            {
+              "id": "milk",
+              "title": "Milk",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "milk_0",
+                  "name": "Regular milk",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "milk_1",
+                  "name": "Oat milk",
+                  "priceDelta": 50
+                },
+                {
+                  "id": "milk_2",
+                  "name": "Almond milk",
+                  "priceDelta": 50
+                }
+              ]
+            },
+            {
+              "id": "coffee_extras",
+              "title": "Extras",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "coffee_extras_0",
+                  "name": "Extra shot",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "coffee_extras_1",
+                  "name": "Hazelnut syrup",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "coffee_extras_2",
+                  "name": "Vanilla syrup",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "coffee_extras_3",
+                  "name": "Whipped cream",
+                  "priceDelta": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "brew-and-bean-07",
+          "name": "Hazelnut Frappé",
+          "description": "Blended iced coffee with hazelnut and whipped cream.",
+          "price": 229,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🥤",
+          "customizations": [
+            {
+              "id": "cup",
+              "title": "Cup size",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "cup_0",
+                  "name": "Regular",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "cup_1",
+                  "name": "Large",
+                  "priceDelta": 60
+                }
+              ]
+            },
+            {
+              "id": "milk",
+              "title": "Milk",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "milk_0",
+                  "name": "Regular milk",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "milk_1",
+                  "name": "Oat milk",
+                  "priceDelta": 50
+                },
+                {
+                  "id": "milk_2",
+                  "name": "Almond milk",
+                  "priceDelta": 50
+                }
+              ]
+            },
+            {
+              "id": "coffee_extras",
+              "title": "Extras",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "coffee_extras_0",
+                  "name": "Extra shot",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "coffee_extras_1",
+                  "name": "Hazelnut syrup",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "coffee_extras_2",
+                  "name": "Vanilla syrup",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "coffee_extras_3",
+                  "name": "Whipped cream",
+                  "priceDelta": 30
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "All-Day Breakfast",
+      "items": [
+        {
+          "id": "brew-and-bean-08",
+          "name": "Avocado Sourdough Toast",
+          "description": "Smashed avocado, cherry tomatoes, feta and chilli flakes on sourdough.",
+          "price": 329,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🥑",
+          "customizations": []
+        },
+        {
+          "id": "brew-and-bean-09",
+          "name": "Classic English Breakfast",
+          "description": "Eggs your way, chicken sausages, hash brown, baked beans and toast.",
+          "price": 389,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🍳",
+          "customizations": []
+        },
+        {
+          "id": "brew-and-bean-10",
+          "name": "Masala Cheese Omelette",
+          "description": "Three-egg omelette with onion, chilli, coriander and cheddar.",
+          "price": 199,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🍳",
+          "customizations": []
+        },
+        {
+          "id": "brew-and-bean-11",
+          "name": "Fluffy Pancakes with Maple",
+          "description": "Stack of buttermilk pancakes with maple syrup and berries.",
+          "price": 249,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥞",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Sandwiches & Bakes",
+      "items": [
+        {
+          "id": "brew-and-bean-12",
+          "name": "Pesto Chicken Panini",
+          "description": "Grilled chicken, basil pesto, mozzarella and sun-dried tomato.",
+          "price": 299,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🥪",
+          "customizations": []
+        },
+        {
+          "id": "brew-and-bean-13",
+          "name": "Mushroom & Cheese Croissant",
+          "description": "Buttery croissant stuffed with garlic mushrooms and cheese.",
+          "price": 229,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥐",
+          "customizations": []
+        },
+        {
+          "id": "brew-and-bean-14",
+          "name": "Butter Croissant",
+          "description": "Flaky, all-butter French croissant baked in-house.",
+          "price": 129,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥐",
+          "customizations": []
+        },
+        {
+          "id": "brew-and-bean-15",
+          "name": "Blueberry Muffin",
+          "description": "Soft muffin bursting with blueberries and a crumble top.",
+          "price": 139,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🧁",
+          "customizations": []
+        }
+      ]
+    }
+  ]
+}

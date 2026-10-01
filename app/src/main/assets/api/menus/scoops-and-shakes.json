@@ -1,0 +1,459 @@
+{
+  "restaurantId": "scoops-and-shakes",
+  "sections": [
+    {
+      "name": "Scoops",
+      "items": [
+        {
+          "id": "scoops-and-shakes-01",
+          "name": "Belgian Dark Chocolate",
+          "description": "Intense dark chocolate ice cream made with Belgian cocoa.",
+          "price": 129,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🍫",
+          "customizations": [
+            {
+              "id": "serve",
+              "title": "Serve in",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "serve_0",
+                  "name": "Cup",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "serve_1",
+                  "name": "Waffle cone",
+                  "priceDelta": 30
+                }
+              ]
+            },
+            {
+              "id": "scoop_toppings",
+              "title": "Toppings",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "scoop_toppings_0",
+                  "name": "Hot fudge",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "scoop_toppings_1",
+                  "name": "Choco chips",
+                  "priceDelta": 25
+                },
+                {
+                  "id": "scoop_toppings_2",
+                  "name": "Roasted almonds",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "scoop_toppings_3",
+                  "name": "Rainbow sprinkles",
+                  "priceDelta": 15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scoops-and-shakes-02",
+          "name": "Alphonso Mango",
+          "description": "Made with Ratnagiri Alphonso mango pulp.",
+          "price": 119,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥭",
+          "customizations": [
+            {
+              "id": "serve",
+              "title": "Serve in",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "serve_0",
+                  "name": "Cup",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "serve_1",
+                  "name": "Waffle cone",
+                  "priceDelta": 30
+                }
+              ]
+            },
+            {
+              "id": "scoop_toppings",
+              "title": "Toppings",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "scoop_toppings_0",
+                  "name": "Hot fudge",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "scoop_toppings_1",
+                  "name": "Choco chips",
+                  "priceDelta": 25
+                },
+                {
+                  "id": "scoop_toppings_2",
+                  "name": "Roasted almonds",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "scoop_toppings_3",
+                  "name": "Rainbow sprinkles",
+                  "priceDelta": 15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scoops-and-shakes-03",
+          "name": "Tender Coconut",
+          "description": "Light, refreshing ice cream with tender coconut flesh.",
+          "price": 119,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥥",
+          "customizations": [
+            {
+              "id": "serve",
+              "title": "Serve in",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "serve_0",
+                  "name": "Cup",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "serve_1",
+                  "name": "Waffle cone",
+                  "priceDelta": 30
+                }
+              ]
+            },
+            {
+              "id": "scoop_toppings",
+              "title": "Toppings",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "scoop_toppings_0",
+                  "name": "Hot fudge",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "scoop_toppings_1",
+                  "name": "Choco chips",
+                  "priceDelta": 25
+                },
+                {
+                  "id": "scoop_toppings_2",
+                  "name": "Roasted almonds",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "scoop_toppings_3",
+                  "name": "Rainbow sprinkles",
+                  "priceDelta": 15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scoops-and-shakes-04",
+          "name": "Sitaphal",
+          "description": "Seasonal custard-apple ice cream, a Hyderabad favourite.",
+          "price": 139,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🍈",
+          "customizations": [
+            {
+              "id": "serve",
+              "title": "Serve in",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "serve_0",
+                  "name": "Cup",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "serve_1",
+                  "name": "Waffle cone",
+                  "priceDelta": 30
+                }
+              ]
+            },
+            {
+              "id": "scoop_toppings",
+              "title": "Toppings",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "scoop_toppings_0",
+                  "name": "Hot fudge",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "scoop_toppings_1",
+                  "name": "Choco chips",
+                  "priceDelta": 25
+                },
+                {
+                  "id": "scoop_toppings_2",
+                  "name": "Roasted almonds",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "scoop_toppings_3",
+                  "name": "Rainbow sprinkles",
+                  "priceDelta": 15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scoops-and-shakes-05",
+          "name": "Roasted Almond Fudge",
+          "description": "Vanilla bean base with roasted almonds and fudge ribbons.",
+          "price": 139,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🌰",
+          "customizations": [
+            {
+              "id": "serve",
+              "title": "Serve in",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "serve_0",
+                  "name": "Cup",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "serve_1",
+                  "name": "Waffle cone",
+                  "priceDelta": 30
+                }
+              ]
+            },
+            {
+              "id": "scoop_toppings",
+              "title": "Toppings",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "scoop_toppings_0",
+                  "name": "Hot fudge",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "scoop_toppings_1",
+                  "name": "Choco chips",
+                  "priceDelta": 25
+                },
+                {
+                  "id": "scoop_toppings_2",
+                  "name": "Roasted almonds",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "scoop_toppings_3",
+                  "name": "Rainbow sprinkles",
+                  "priceDelta": 15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scoops-and-shakes-06",
+          "name": "Salted Caramel",
+          "description": "Burnt caramel ice cream with a pinch of sea salt.",
+          "price": 129,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍯",
+          "customizations": [
+            {
+              "id": "serve",
+              "title": "Serve in",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "serve_0",
+                  "name": "Cup",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "serve_1",
+                  "name": "Waffle cone",
+                  "priceDelta": 30
+                }
+              ]
+            },
+            {
+              "id": "scoop_toppings",
+              "title": "Toppings",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "scoop_toppings_0",
+                  "name": "Hot fudge",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "scoop_toppings_1",
+                  "name": "Choco chips",
+                  "priceDelta": 25
+                },
+                {
+                  "id": "scoop_toppings_2",
+                  "name": "Roasted almonds",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "scoop_toppings_3",
+                  "name": "Rainbow sprinkles",
+                  "priceDelta": 15
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sundaes",
+      "items": [
+        {
+          "id": "scoops-and-shakes-07",
+          "name": "Hot Chocolate Fudge",
+          "description": "Vanilla scoops with hot fudge, nuts and a cherry.",
+          "price": 199,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🍨",
+          "customizations": []
+        },
+        {
+          "id": "scoops-and-shakes-08",
+          "name": "Death by Chocolate Sundae",
+          "description": "Chocolate cake, three chocolate scoops, fudge and brownie bits.",
+          "price": 249,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍫",
+          "customizations": []
+        },
+        {
+          "id": "scoops-and-shakes-09",
+          "name": "Banana Split",
+          "description": "Banana with vanilla, chocolate and strawberry scoops and toppings.",
+          "price": 219,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍌",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Shakes",
+      "items": [
+        {
+          "id": "scoops-and-shakes-10",
+          "name": "KitKat Thick Shake",
+          "description": "Chocolate shake blended with KitKat pieces.",
+          "price": 189,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥤",
+          "customizations": []
+        },
+        {
+          "id": "scoops-and-shakes-11",
+          "name": "Strawberry Shake",
+          "description": "Fresh strawberry and vanilla ice cream shake.",
+          "price": 159,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍓",
+          "customizations": []
+        },
+        {
+          "id": "scoops-and-shakes-12",
+          "name": "Chikoo Shake",
+          "description": "Creamy sapota shake with a hint of cardamom.",
+          "price": 149,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥤",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Waffles",
+      "items": [
+        {
+          "id": "scoops-and-shakes-13",
+          "name": "Belgian Chocolate Waffle",
+          "description": "Crisp waffle drizzled with dark and milk chocolate.",
+          "price": 179,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🧇",
+          "customizations": []
+        },
+        {
+          "id": "scoops-and-shakes-14",
+          "name": "Nutella Banana Waffle",
+          "description": "Warm waffle with Nutella, banana and toasted hazelnuts.",
+          "price": 209,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🧇",
+          "customizations": []
+        }
+      ]
+    }
+  ]
+}

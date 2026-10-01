@@ -1,0 +1,243 @@
+{
+  "restaurantId": "the-dessert-lab",
+  "sections": [
+    {
+      "name": "Cakes",
+      "items": [
+        {
+          "id": "the-dessert-lab-01",
+          "name": "Belgian Chocolate Truffle Cake",
+          "description": "Moist chocolate sponge layered with 54% Belgian chocolate ganache. Eggless.",
+          "price": 649,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🎂",
+          "customizations": [
+            {
+              "id": "weight",
+              "title": "Choose weight",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "weight_0",
+                  "name": "500 g",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "weight_1",
+                  "name": "1 kg",
+                  "priceDelta": 560
+                }
+              ]
+            },
+            {
+              "id": "cake_extras",
+              "title": "Celebrate",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "cake_extras_0",
+                  "name": "Message on cake",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "cake_extras_1",
+                  "name": "Candles & topper",
+                  "priceDelta": 49
+                },
+                {
+                  "id": "cake_extras_2",
+                  "name": "Party poppers",
+                  "priceDelta": 79
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the-dessert-lab-02",
+          "name": "Red Velvet Cake",
+          "description": "Cocoa-kissed red velvet with whipped cream-cheese frosting. Eggless.",
+          "price": 699,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🎂",
+          "customizations": [
+            {
+              "id": "weight",
+              "title": "Choose weight",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "weight_0",
+                  "name": "500 g",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "weight_1",
+                  "name": "1 kg",
+                  "priceDelta": 560
+                }
+              ]
+            },
+            {
+              "id": "cake_extras",
+              "title": "Celebrate",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "cake_extras_0",
+                  "name": "Message on cake",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "cake_extras_1",
+                  "name": "Candles & topper",
+                  "priceDelta": 49
+                },
+                {
+                  "id": "cake_extras_2",
+                  "name": "Party poppers",
+                  "priceDelta": 79
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the-dessert-lab-03",
+          "name": "Blueberry Cheesecake Slice",
+          "description": "Baked New York-style cheesecake with a tangy blueberry compote.",
+          "price": 229,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍰",
+          "customizations": []
+        },
+        {
+          "id": "the-dessert-lab-04",
+          "name": "Tres Leches",
+          "description": "Sponge soaked in three milks, topped with whipped cream and cinnamon.",
+          "price": 199,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥛",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Brownies & Cookies",
+      "items": [
+        {
+          "id": "the-dessert-lab-05",
+          "name": "Walnut Brownie",
+          "description": "Fudgy dark chocolate brownie loaded with toasted walnuts.",
+          "price": 119,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🍫",
+          "customizations": []
+        },
+        {
+          "id": "the-dessert-lab-06",
+          "name": "Sizzling Brownie with Ice Cream",
+          "description": "Hot brownie on a sizzler plate with vanilla ice cream and chocolate sauce.",
+          "price": 229,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🔥",
+          "customizations": []
+        },
+        {
+          "id": "the-dessert-lab-07",
+          "name": "Double Chocolate Cookies (3 pcs)",
+          "description": "Chewy cookies with dark and milk chocolate chunks.",
+          "price": 149,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍪",
+          "customizations": []
+        },
+        {
+          "id": "the-dessert-lab-08",
+          "name": "Nutella Brownie",
+          "description": "Gooey brownie with a thick Nutella swirl.",
+          "price": 149,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍫",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Indian Fusion",
+      "items": [
+        {
+          "id": "the-dessert-lab-09",
+          "name": "Rasmalai Tres Leches",
+          "description": "Saffron-cardamom tres leches topped with rasmalai and pistachio.",
+          "price": 219,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🍮",
+          "customizations": []
+        },
+        {
+          "id": "the-dessert-lab-10",
+          "name": "Gulab Jamun Cheesecake",
+          "description": "Creamy cheesecake studded with warm gulab jamun.",
+          "price": 239,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🟤",
+          "customizations": []
+        },
+        {
+          "id": "the-dessert-lab-11",
+          "name": "Kunafa Cups",
+          "description": "Crispy kataifi cups filled with sweet cheese and rose syrup.",
+          "price": 249,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍯",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Dessert Jars",
+      "items": [
+        {
+          "id": "the-dessert-lab-12",
+          "name": "Death by Chocolate Jar",
+          "description": "Layers of brownie, chocolate mousse, ganache and cocoa crumble.",
+          "price": 199,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍫",
+          "customizations": []
+        },
+        {
+          "id": "the-dessert-lab-13",
+          "name": "Biscoff Cheesecake Jar",
+          "description": "Biscoff crumb, cheesecake cream and caramelised biscuit spread.",
+          "price": 219,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍪",
+          "customizations": []
+        }
+      ]
+    }
+  ]
+}

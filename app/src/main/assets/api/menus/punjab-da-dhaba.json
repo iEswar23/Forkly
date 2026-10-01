@@ -1,0 +1,240 @@
+{
+  "restaurantId": "punjab-da-dhaba",
+  "sections": [
+    {
+      "name": "Tandoor Se",
+      "items": [
+        {
+          "id": "punjab-da-dhaba-01",
+          "name": "Tandoori Chicken",
+          "description": "Chicken marinated overnight in yogurt and spices, charred in the tandoor.",
+          "price": 329,
+          "isVeg": false,
+          "isBestseller": true,
+          "emoji": "🍗",
+          "customizations": [
+            {
+              "id": "tandoor_portion",
+              "title": "Portion",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "tandoor_portion_0",
+                  "name": "Half",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "tandoor_portion_1",
+                  "name": "Full",
+                  "priceDelta": 260
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "punjab-da-dhaba-02",
+          "name": "Chicken Tikka",
+          "description": "Boneless chicken chunks in a smoky tandoori marinade.",
+          "price": 299,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🍢",
+          "customizations": []
+        },
+        {
+          "id": "punjab-da-dhaba-03",
+          "name": "Paneer Tikka",
+          "description": "Paneer, peppers and onion grilled with ajwain-spiced marinade.",
+          "price": 269,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🧀",
+          "customizations": []
+        },
+        {
+          "id": "punjab-da-dhaba-04",
+          "name": "Tandoori Mushroom",
+          "description": "Button mushrooms in a creamy, spiced tandoori marinade.",
+          "price": 249,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍄",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Main Course",
+      "items": [
+        {
+          "id": "punjab-da-dhaba-05",
+          "name": "Butter Chicken",
+          "description": "Tandoori chicken in a rich tomato-butter gravy finished with cream.",
+          "price": 349,
+          "isVeg": false,
+          "isBestseller": true,
+          "emoji": "🍲",
+          "customizations": []
+        },
+        {
+          "id": "punjab-da-dhaba-06",
+          "name": "Dal Makhani",
+          "description": "Black lentils simmered overnight with butter and cream.",
+          "price": 249,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🥘",
+          "customizations": []
+        },
+        {
+          "id": "punjab-da-dhaba-07",
+          "name": "Kadai Paneer",
+          "description": "Paneer and peppers in a freshly ground kadai masala.",
+          "price": 279,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥘",
+          "customizations": []
+        },
+        {
+          "id": "punjab-da-dhaba-08",
+          "name": "Sarson Da Saag",
+          "description": "Slow-cooked mustard greens finished with white butter.",
+          "price": 239,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥬",
+          "customizations": []
+        },
+        {
+          "id": "punjab-da-dhaba-09",
+          "name": "Amritsari Chole",
+          "description": "Dark, tangy chickpea curry with whole spices.",
+          "price": 219,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍛",
+          "customizations": []
+        },
+        {
+          "id": "punjab-da-dhaba-10",
+          "name": "Rara Mutton",
+          "description": "Mutton cooked with its own mince in a robust masala.",
+          "price": 399,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🍖",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Breads",
+      "items": [
+        {
+          "id": "punjab-da-dhaba-11",
+          "name": "Butter Naan",
+          "description": "Tandoor-baked naan glazed with butter.",
+          "price": 55,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥙",
+          "customizations": []
+        },
+        {
+          "id": "punjab-da-dhaba-12",
+          "name": "Garlic Naan",
+          "description": "Naan topped with garlic and coriander.",
+          "price": 65,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🧄",
+          "customizations": []
+        },
+        {
+          "id": "punjab-da-dhaba-13",
+          "name": "Lachha Paratha",
+          "description": "Flaky, layered whole-wheat paratha.",
+          "price": 60,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥙",
+          "customizations": []
+        },
+        {
+          "id": "punjab-da-dhaba-14",
+          "name": "Amritsari Kulcha",
+          "description": "Crisp stuffed kulcha with spiced potato and onion, served with chole.",
+          "price": 99,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🥙",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Rice, Thali & Lassi",
+      "items": [
+        {
+          "id": "punjab-da-dhaba-15",
+          "name": "Jeera Rice",
+          "description": "Basmati rice tempered with cumin and ghee.",
+          "price": 149,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍚",
+          "customizations": []
+        },
+        {
+          "id": "punjab-da-dhaba-16",
+          "name": "Punjabi Veg Thali",
+          "description": "Dal makhani, paneer sabzi, seasonal veg, jeera rice, 2 butter rotis, salad, raita and gulab jamun.",
+          "price": 299,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🍱",
+          "customizations": []
+        },
+        {
+          "id": "punjab-da-dhaba-17",
+          "name": "Lassi",
+          "description": "Thick, hand-churned Punjabi lassi topped with malai.",
+          "price": 89,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥛",
+          "customizations": [
+            {
+              "id": "lassi_flavour",
+              "title": "Flavour",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "lassi_flavour_0",
+                  "name": "Sweet",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "lassi_flavour_1",
+                  "name": "Salted",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "lassi_flavour_2",
+                  "name": "Mango",
+                  "priceDelta": 30
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

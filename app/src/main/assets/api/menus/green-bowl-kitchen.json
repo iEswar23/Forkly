@@ -1,0 +1,519 @@
+{
+  "restaurantId": "green-bowl-kitchen",
+  "sections": [
+    {
+      "name": "Power Bowls",
+      "items": [
+        {
+          "id": "green-bowl-kitchen-01",
+          "name": "Teriyaki Chicken Rice Bowl",
+          "description": "Grilled teriyaki chicken, brown rice, edamame, pickled carrots and sesame. 32 g protein.",
+          "price": 329,
+          "isVeg": false,
+          "isBestseller": true,
+          "emoji": "🍱",
+          "customizations": [
+            {
+              "id": "protein",
+              "title": "Extra protein",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "protein_0",
+                  "name": "No extra protein",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "protein_1",
+                  "name": "Grilled chicken",
+                  "priceDelta": 90
+                },
+                {
+                  "id": "protein_2",
+                  "name": "Paneer",
+                  "priceDelta": 70
+                },
+                {
+                  "id": "protein_3",
+                  "name": "Tofu",
+                  "priceDelta": 60
+                },
+                {
+                  "id": "protein_4",
+                  "name": "Boiled eggs",
+                  "priceDelta": 40
+                }
+              ]
+            },
+            {
+              "id": "bowl_extras",
+              "title": "Toppings",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "bowl_extras_0",
+                  "name": "Avocado",
+                  "priceDelta": 80
+                },
+                {
+                  "id": "bowl_extras_1",
+                  "name": "Roasted seeds",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "bowl_extras_2",
+                  "name": "Extra hummus",
+                  "priceDelta": 40
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "green-bowl-kitchen-02",
+          "name": "Mexican Burrito Bowl",
+          "description": "Cilantro-lime rice, black beans, corn salsa, pico de gallo and sour cream.",
+          "price": 299,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🌯",
+          "customizations": [
+            {
+              "id": "protein",
+              "title": "Extra protein",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "protein_0",
+                  "name": "No extra protein",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "protein_1",
+                  "name": "Grilled chicken",
+                  "priceDelta": 90
+                },
+                {
+                  "id": "protein_2",
+                  "name": "Paneer",
+                  "priceDelta": 70
+                },
+                {
+                  "id": "protein_3",
+                  "name": "Tofu",
+                  "priceDelta": 60
+                },
+                {
+                  "id": "protein_4",
+                  "name": "Boiled eggs",
+                  "priceDelta": 40
+                }
+              ]
+            },
+            {
+              "id": "bowl_extras",
+              "title": "Toppings",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "bowl_extras_0",
+                  "name": "Avocado",
+                  "priceDelta": 80
+                },
+                {
+                  "id": "bowl_extras_1",
+                  "name": "Roasted seeds",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "bowl_extras_2",
+                  "name": "Extra hummus",
+                  "priceDelta": 40
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "green-bowl-kitchen-03",
+          "name": "Paneer Tikka Quinoa Bowl",
+          "description": "Tandoori paneer, tri-colour quinoa, mint yogurt and crunchy veggies.",
+          "price": 319,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🧀",
+          "customizations": [
+            {
+              "id": "protein",
+              "title": "Extra protein",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "protein_0",
+                  "name": "No extra protein",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "protein_1",
+                  "name": "Grilled chicken",
+                  "priceDelta": 90
+                },
+                {
+                  "id": "protein_2",
+                  "name": "Paneer",
+                  "priceDelta": 70
+                },
+                {
+                  "id": "protein_3",
+                  "name": "Tofu",
+                  "priceDelta": 60
+                },
+                {
+                  "id": "protein_4",
+                  "name": "Boiled eggs",
+                  "priceDelta": 40
+                }
+              ]
+            },
+            {
+              "id": "bowl_extras",
+              "title": "Toppings",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "bowl_extras_0",
+                  "name": "Avocado",
+                  "priceDelta": 80
+                },
+                {
+                  "id": "bowl_extras_1",
+                  "name": "Roasted seeds",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "bowl_extras_2",
+                  "name": "Extra hummus",
+                  "priceDelta": 40
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "green-bowl-kitchen-04",
+          "name": "Peri Peri Chicken Bowl",
+          "description": "Peri peri chicken, herbed rice, roasted peppers and garlic aioli.",
+          "price": 339,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🌶️",
+          "customizations": [
+            {
+              "id": "protein",
+              "title": "Extra protein",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "protein_0",
+                  "name": "No extra protein",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "protein_1",
+                  "name": "Grilled chicken",
+                  "priceDelta": 90
+                },
+                {
+                  "id": "protein_2",
+                  "name": "Paneer",
+                  "priceDelta": 70
+                },
+                {
+                  "id": "protein_3",
+                  "name": "Tofu",
+                  "priceDelta": 60
+                },
+                {
+                  "id": "protein_4",
+                  "name": "Boiled eggs",
+                  "priceDelta": 40
+                }
+              ]
+            },
+            {
+              "id": "bowl_extras",
+              "title": "Toppings",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "bowl_extras_0",
+                  "name": "Avocado",
+                  "priceDelta": 80
+                },
+                {
+                  "id": "bowl_extras_1",
+                  "name": "Roasted seeds",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "bowl_extras_2",
+                  "name": "Extra hummus",
+                  "priceDelta": 40
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "green-bowl-kitchen-05",
+          "name": "Thai Basil Tofu Bowl",
+          "description": "Crispy tofu in Thai basil sauce with jasmine rice and bok choy.",
+          "price": 309,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🌿",
+          "customizations": [
+            {
+              "id": "protein",
+              "title": "Extra protein",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "protein_0",
+                  "name": "No extra protein",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "protein_1",
+                  "name": "Grilled chicken",
+                  "priceDelta": 90
+                },
+                {
+                  "id": "protein_2",
+                  "name": "Paneer",
+                  "priceDelta": 70
+                },
+                {
+                  "id": "protein_3",
+                  "name": "Tofu",
+                  "priceDelta": 60
+                },
+                {
+                  "id": "protein_4",
+                  "name": "Boiled eggs",
+                  "priceDelta": 40
+                }
+              ]
+            },
+            {
+              "id": "bowl_extras",
+              "title": "Toppings",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "bowl_extras_0",
+                  "name": "Avocado",
+                  "priceDelta": 80
+                },
+                {
+                  "id": "bowl_extras_1",
+                  "name": "Roasted seeds",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "bowl_extras_2",
+                  "name": "Extra hummus",
+                  "priceDelta": 40
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Salads",
+      "items": [
+        {
+          "id": "green-bowl-kitchen-06",
+          "name": "Classic Caesar Salad",
+          "description": "Romaine, parmesan, sourdough croutons and creamy Caesar dressing.",
+          "price": 269,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥗",
+          "customizations": [
+            {
+              "id": "protein",
+              "title": "Extra protein",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "protein_0",
+                  "name": "No extra protein",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "protein_1",
+                  "name": "Grilled chicken",
+                  "priceDelta": 90
+                },
+                {
+                  "id": "protein_2",
+                  "name": "Paneer",
+                  "priceDelta": 70
+                },
+                {
+                  "id": "protein_3",
+                  "name": "Tofu",
+                  "priceDelta": 60
+                },
+                {
+                  "id": "protein_4",
+                  "name": "Boiled eggs",
+                  "priceDelta": 40
+                }
+              ]
+            },
+            {
+              "id": "bowl_extras",
+              "title": "Toppings",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "bowl_extras_0",
+                  "name": "Avocado",
+                  "priceDelta": 80
+                },
+                {
+                  "id": "bowl_extras_1",
+                  "name": "Roasted seeds",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "bowl_extras_2",
+                  "name": "Extra hummus",
+                  "priceDelta": 40
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "green-bowl-kitchen-07",
+          "name": "Greek Feta Salad",
+          "description": "Cucumber, tomato, olives, red onion and feta with oregano vinaigrette.",
+          "price": 279,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥗",
+          "customizations": []
+        },
+        {
+          "id": "green-bowl-kitchen-08",
+          "name": "Grilled Chicken Avocado Salad",
+          "description": "Grilled chicken, avocado, greens, cherry tomatoes and honey-mustard.",
+          "price": 349,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🥑",
+          "customizations": []
+        },
+        {
+          "id": "green-bowl-kitchen-09",
+          "name": "Sprouts & Pomegranate Chaat",
+          "description": "Moong sprouts, pomegranate, onion and tangy chaat masala.",
+          "price": 179,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🌱",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Wraps",
+      "items": [
+        {
+          "id": "green-bowl-kitchen-10",
+          "name": "Hummus Falafel Wrap",
+          "description": "Baked falafel, hummus, pickled veggies and tahini in a whole-wheat wrap.",
+          "price": 229,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🌯",
+          "customizations": []
+        },
+        {
+          "id": "green-bowl-kitchen-11",
+          "name": "Grilled Chicken Wrap",
+          "description": "Herb-grilled chicken, lettuce, tomato and hung-curd mayo.",
+          "price": 259,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🌯",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Juices & Smoothies",
+      "items": [
+        {
+          "id": "green-bowl-kitchen-12",
+          "name": "Green Detox Juice",
+          "description": "Spinach, cucumber, green apple, celery and lemon.",
+          "price": 149,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥬",
+          "customizations": []
+        },
+        {
+          "id": "green-bowl-kitchen-13",
+          "name": "Berry Banana Smoothie",
+          "description": "Strawberries, blueberries, banana and Greek yogurt.",
+          "price": 179,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍓",
+          "customizations": []
+        },
+        {
+          "id": "green-bowl-kitchen-14",
+          "name": "Cold-Pressed ABC Juice",
+          "description": "Apple, beetroot and carrot, cold-pressed.",
+          "price": 159,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍎",
+          "customizations": []
+        }
+      ]
+    }
+  ]
+}

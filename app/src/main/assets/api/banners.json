@@ -1,0 +1,42 @@
+[
+  {
+    "id": "welcome50",
+    "title": "50% OFF up to ₹100",
+    "subtitle": "On your first orders · Use WELCOME50",
+    "emoji": "🎉",
+    "gradientStart": "#E53935",
+    "gradientEnd": "#FF8A50",
+    "couponCode": "WELCOME50",
+    "category": null
+  },
+  {
+    "id": "biryani-fest",
+    "title": "Biryani Fest is here",
+    "subtitle": "Flat ₹120 off on feasts above ₹599 · FEAST120",
+    "emoji": "🍛",
+    "gradientStart": "#8D3B12",
+    "gradientEnd": "#F0A04B",
+    "couponCode": "FEAST120",
+    "category": "Biryani"
+  },
+  {
+    "id": "freedel",
+    "title": "Free delivery, all day",
+    "subtitle": "On orders above ₹199 · Use FREEDEL",
+    "emoji": "🛵",
+    "gradientStart": "#00695C",
+    "gradientEnd": "#4DB6AC",
+    "couponCode": "FREEDEL",
+    "category": null
+  },
+  {
+    "id": "sweet20",
+    "title": "Sweet cravings?",
+    "subtitle": "20% off desserts & ice creams · SWEET20",
+    "emoji": "🍨",
+    "gradientStart": "#AD1457",
+    "gradientEnd": "#F06292",
+    "couponCode": "SWEET20",
+    "category": "Desserts"
+  }
+]

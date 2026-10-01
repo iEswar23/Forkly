@@ -1,0 +1,62 @@
+[
+  {
+    "id": "biryani",
+    "name": "Biryani",
+    "emoji": "🍛"
+  },
+  {
+    "id": "pizza",
+    "name": "Pizza",
+    "emoji": "🍕"
+  },
+  {
+    "id": "burgers",
+    "name": "Burgers",
+    "emoji": "🍔"
+  },
+  {
+    "id": "south-indian",
+    "name": "South Indian",
+    "emoji": "🥥"
+  },
+  {
+    "id": "chinese",
+    "name": "Chinese",
+    "emoji": "🥡"
+  },
+  {
+    "id": "north-indian",
+    "name": "North Indian",
+    "emoji": "🍲"
+  },
+  {
+    "id": "desserts",
+    "name": "Desserts",
+    "emoji": "🍰"
+  },
+  {
+    "id": "ice-cream",
+    "name": "Ice Cream",
+    "emoji": "🍨"
+  },
+  {
+    "id": "healthy",
+    "name": "Healthy",
+    "emoji": "🥗"
+  },
+  {
+    "id": "cafe",
+    "name": "Cafe",
+    "emoji": "☕"
+  },
+  {
+    "id": "rolls",
+    "name": "Rolls",
+    "emoji": "🌯"
+  },
+  {
+    "id": "andhra",
+    "name": "Andhra",
+    "emoji": "🌶️"
+  }
+]

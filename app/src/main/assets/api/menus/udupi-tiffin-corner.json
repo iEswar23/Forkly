@@ -1,0 +1,335 @@
+{
+  "restaurantId": "udupi-tiffin-corner",
+  "sections": [
+    {
+      "name": "Dosas",
+      "items": [
+        {
+          "id": "udupi-tiffin-corner-01",
+          "name": "Masala Dosa",
+          "description": "Crisp golden dosa with spiced potato masala, served with coconut chutney, tomato chutney and sambar.",
+          "price": 89,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🥞",
+          "customizations": [
+            {
+              "id": "dosa_extras",
+              "title": "Make it better",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "dosa_extras_0",
+                  "name": "Extra butter",
+                  "priceDelta": 20
+                },
+                {
+                  "id": "dosa_extras_1",
+                  "name": "Cheese",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "dosa_extras_2",
+                  "name": "Extra chutney",
+                  "priceDelta": 15
+                },
+                {
+                  "id": "dosa_extras_3",
+                  "name": "Gunpowder podi",
+                  "priceDelta": 15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "udupi-tiffin-corner-02",
+          "name": "Ghee Roast Dosa",
+          "description": "Thin, cone-shaped dosa roasted in pure ghee until shatteringly crisp.",
+          "price": 119,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🥞",
+          "customizations": [
+            {
+              "id": "dosa_extras",
+              "title": "Make it better",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "dosa_extras_0",
+                  "name": "Extra butter",
+                  "priceDelta": 20
+                },
+                {
+                  "id": "dosa_extras_1",
+                  "name": "Cheese",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "dosa_extras_2",
+                  "name": "Extra chutney",
+                  "priceDelta": 15
+                },
+                {
+                  "id": "dosa_extras_3",
+                  "name": "Gunpowder podi",
+                  "priceDelta": 15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "udupi-tiffin-corner-03",
+          "name": "Mysore Masala Dosa",
+          "description": "Dosa smeared with fiery red chutney and filled with potato masala.",
+          "price": 109,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🌶️",
+          "customizations": [
+            {
+              "id": "dosa_extras",
+              "title": "Make it better",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "dosa_extras_0",
+                  "name": "Extra butter",
+                  "priceDelta": 20
+                },
+                {
+                  "id": "dosa_extras_1",
+                  "name": "Cheese",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "dosa_extras_2",
+                  "name": "Extra chutney",
+                  "priceDelta": 15
+                },
+                {
+                  "id": "dosa_extras_3",
+                  "name": "Gunpowder podi",
+                  "priceDelta": 15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "udupi-tiffin-corner-04",
+          "name": "Onion Rava Dosa",
+          "description": "Lacy semolina dosa with onions, green chilli, cumin and coriander.",
+          "price": 119,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🧅",
+          "customizations": [
+            {
+              "id": "dosa_extras",
+              "title": "Make it better",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "dosa_extras_0",
+                  "name": "Extra butter",
+                  "priceDelta": 20
+                },
+                {
+                  "id": "dosa_extras_1",
+                  "name": "Cheese",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "dosa_extras_2",
+                  "name": "Extra chutney",
+                  "priceDelta": 15
+                },
+                {
+                  "id": "dosa_extras_3",
+                  "name": "Gunpowder podi",
+                  "priceDelta": 15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "udupi-tiffin-corner-05",
+          "name": "Paper Dosa",
+          "description": "An extra-long, paper-thin plain dosa served with chutneys and sambar.",
+          "price": 129,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "📜",
+          "customizations": [
+            {
+              "id": "dosa_extras",
+              "title": "Make it better",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "dosa_extras_0",
+                  "name": "Extra butter",
+                  "priceDelta": 20
+                },
+                {
+                  "id": "dosa_extras_1",
+                  "name": "Cheese",
+                  "priceDelta": 35
+                },
+                {
+                  "id": "dosa_extras_2",
+                  "name": "Extra chutney",
+                  "priceDelta": 15
+                },
+                {
+                  "id": "dosa_extras_3",
+                  "name": "Gunpowder podi",
+                  "priceDelta": 15
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Idli & Vada",
+      "items": [
+        {
+          "id": "udupi-tiffin-corner-06",
+          "name": "Idli (2 pcs)",
+          "description": "Steamed rice-and-lentil cakes, pillowy soft, with sambar and chutney.",
+          "price": 49,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "⚪",
+          "customizations": []
+        },
+        {
+          "id": "udupi-tiffin-corner-07",
+          "name": "Ghee Podi Idli",
+          "description": "Mini idlis tossed in ghee and spicy gunpowder podi.",
+          "price": 79,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🔥",
+          "customizations": []
+        },
+        {
+          "id": "udupi-tiffin-corner-08",
+          "name": "Medu Vada (2 pcs)",
+          "description": "Crisp urad dal fritters with pepper and curry leaves.",
+          "price": 59,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍩",
+          "customizations": []
+        },
+        {
+          "id": "udupi-tiffin-corner-09",
+          "name": "Sambar Vada",
+          "description": "Medu vada soaked in hot, tangy drumstick sambar.",
+          "price": 69,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥣",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Tiffin Specials",
+      "items": [
+        {
+          "id": "udupi-tiffin-corner-10",
+          "name": "Pesarattu Upma",
+          "description": "Andhra green-gram dosa stuffed with upma, served with ginger chutney.",
+          "price": 99,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🟢",
+          "customizations": []
+        },
+        {
+          "id": "udupi-tiffin-corner-11",
+          "name": "Ven Pongal",
+          "description": "Comforting rice and moong dal cooked with ghee, pepper, cumin and cashews.",
+          "price": 79,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍚",
+          "customizations": []
+        },
+        {
+          "id": "udupi-tiffin-corner-12",
+          "name": "Onion Tomato Uttapam",
+          "description": "Thick, soft pancake topped with onion, tomato and coriander.",
+          "price": 99,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍅",
+          "customizations": []
+        },
+        {
+          "id": "udupi-tiffin-corner-13",
+          "name": "Mini Tiffin Combo",
+          "description": "Mini idlis, mini dosa, vada, kesari and pongal on one plate.",
+          "price": 149,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🍱",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Beverages & Sweets",
+      "items": [
+        {
+          "id": "udupi-tiffin-corner-14",
+          "name": "Filter Coffee",
+          "description": "Strong South Indian decoction coffee with frothy hot milk.",
+          "price": 39,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "☕",
+          "customizations": []
+        },
+        {
+          "id": "udupi-tiffin-corner-15",
+          "name": "Rava Kesari",
+          "description": "Semolina sweet with ghee, saffron, cashews and raisins.",
+          "price": 59,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🟠",
+          "customizations": []
+        },
+        {
+          "id": "udupi-tiffin-corner-16",
+          "name": "Badam Milk",
+          "description": "Warm almond milk with saffron and cardamom.",
+          "price": 69,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥛",
+          "customizations": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,288 @@
+{
+  "restaurantId": "gongura-andhra-kitchen",
+  "sections": [
+    {
+      "name": "Meals",
+      "items": [
+        {
+          "id": "gongura-andhra-kitchen-01",
+          "name": "Andhra Veg Meals",
+          "description": "Rice, pappu, two curries, sambar, rasam, curd, pickle, papad and a sweet.",
+          "price": 199,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🍱",
+          "customizations": []
+        },
+        {
+          "id": "gongura-andhra-kitchen-02",
+          "name": "Andhra Non-Veg Meals",
+          "description": "Veg meals plus chicken curry and a piece of fish fry.",
+          "price": 299,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🍱",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Curries",
+      "items": [
+        {
+          "id": "gongura-andhra-kitchen-03",
+          "name": "Gongura Mutton",
+          "description": "Tender mutton cooked with tangy sorrel leaves and red chillies.",
+          "price": 379,
+          "isVeg": false,
+          "isBestseller": true,
+          "emoji": "🍖",
+          "customizations": []
+        },
+        {
+          "id": "gongura-andhra-kitchen-04",
+          "name": "Kodi Kura",
+          "description": "Home-style Andhra chicken curry with coconut and poppy seeds.",
+          "price": 299,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🍗",
+          "customizations": []
+        },
+        {
+          "id": "gongura-andhra-kitchen-05",
+          "name": "Royyala Iguru",
+          "description": "Dry prawn fry with onions, chilli and fresh curry leaves.",
+          "price": 389,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🦐",
+          "customizations": []
+        },
+        {
+          "id": "gongura-andhra-kitchen-06",
+          "name": "Gutti Vankaya Curry",
+          "description": "Stuffed baby brinjals in a peanut-sesame masala.",
+          "price": 219,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍆",
+          "customizations": []
+        },
+        {
+          "id": "gongura-andhra-kitchen-07",
+          "name": "Tomato Pappu",
+          "description": "Toor dal cooked with tomatoes and tempered with garlic.",
+          "price": 169,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍅",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Biryani & Pulao",
+      "items": [
+        {
+          "id": "gongura-andhra-kitchen-08",
+          "name": "Chicken Fry Piece Biryani",
+          "description": "Spicy fried chicken pieces layered over biryani rice.",
+          "price": 289,
+          "isVeg": false,
+          "isBestseller": true,
+          "emoji": "🍛",
+          "customizations": [
+            {
+              "id": "portion",
+              "title": "Choose portion",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "portion_0",
+                  "name": "Regular (serves 1)",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "portion_1",
+                  "name": "Full (serves 2)",
+                  "priceDelta": 120
+                },
+                {
+                  "id": "portion_2",
+                  "name": "Family pack (serves 3–4)",
+                  "priceDelta": 420
+                }
+              ]
+            },
+            {
+              "id": "biryani_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "biryani_extras_0",
+                  "name": "Extra raita",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "biryani_extras_1",
+                  "name": "Extra mirchi ka salan",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "biryani_extras_2",
+                  "name": "Boiled egg",
+                  "priceDelta": 20
+                },
+                {
+                  "id": "biryani_extras_3",
+                  "name": "Double masala",
+                  "priceDelta": 35
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gongura-andhra-kitchen-09",
+          "name": "Ulavacharu Chicken Biryani",
+          "description": "Biryani with the smoky depth of horse-gram ulavacharu.",
+          "price": 319,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🍛",
+          "customizations": [
+            {
+              "id": "portion",
+              "title": "Choose portion",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "portion_0",
+                  "name": "Regular (serves 1)",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "portion_1",
+                  "name": "Full (serves 2)",
+                  "priceDelta": 120
+                },
+                {
+                  "id": "portion_2",
+                  "name": "Family pack (serves 3–4)",
+                  "priceDelta": 420
+                }
+              ]
+            },
+            {
+              "id": "biryani_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "biryani_extras_0",
+                  "name": "Extra raita",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "biryani_extras_1",
+                  "name": "Extra mirchi ka salan",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "biryani_extras_2",
+                  "name": "Boiled egg",
+                  "priceDelta": 20
+                },
+                {
+                  "id": "biryani_extras_3",
+                  "name": "Double masala",
+                  "priceDelta": 35
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gongura-andhra-kitchen-10",
+          "name": "Natu Kodi Pulao",
+          "description": "Country chicken pulao with a robust Andhra masala.",
+          "price": 349,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🐓",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Starters",
+      "items": [
+        {
+          "id": "gongura-andhra-kitchen-11",
+          "name": "Chicken Pakodi",
+          "description": "Crisp, spicy chicken fritters with onions and curry leaves.",
+          "price": 249,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🍗",
+          "customizations": []
+        },
+        {
+          "id": "gongura-andhra-kitchen-12",
+          "name": "Apollo Fish",
+          "description": "Fried fish tossed in a tangy chilli-yogurt sauce.",
+          "price": 319,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🐟",
+          "customizations": []
+        },
+        {
+          "id": "gongura-andhra-kitchen-13",
+          "name": "Mirchi Bajji (4 pcs)",
+          "description": "Stuffed green chilli fritters with onion-lemon topping.",
+          "price": 79,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🌶️",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Extras",
+      "items": [
+        {
+          "id": "gongura-andhra-kitchen-14",
+          "name": "Curd Rice",
+          "description": "Cooling curd rice tempered with mustard and curry leaves.",
+          "price": 99,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍚",
+          "customizations": []
+        },
+        {
+          "id": "gongura-andhra-kitchen-15",
+          "name": "Pootharekulu (2 pcs)",
+          "description": "Paper-thin rice sweet from Atreyapuram with ghee and jaggery.",
+          "price": 99,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "📜",
+          "customizations": []
+        }
+      ]
+    }
+  ]
+}

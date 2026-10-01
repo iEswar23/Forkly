@@ -1,0 +1,629 @@
+{
+  "restaurantId": "napoli-woodfire",
+  "sections": [
+    {
+      "name": "Woodfired Pizzas",
+      "items": [
+        {
+          "id": "napoli-woodfire-01",
+          "name": "Margherita Classica",
+          "description": "San Marzano tomato, fior di latte, fresh basil and extra-virgin olive oil.",
+          "price": 299,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🍕",
+          "customizations": [
+            {
+              "id": "size",
+              "title": "Choose size",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "size_0",
+                  "name": "Regular 8\"",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "size_1",
+                  "name": "Medium 10\"",
+                  "priceDelta": 150
+                },
+                {
+                  "id": "size_2",
+                  "name": "Large 12\"",
+                  "priceDelta": 280
+                }
+              ]
+            },
+            {
+              "id": "veg_toppings",
+              "title": "Extra toppings (up to 4)",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "veg_toppings_0",
+                  "name": "Extra mozzarella",
+                  "priceDelta": 60
+                },
+                {
+                  "id": "veg_toppings_1",
+                  "name": "Jalapeños",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "veg_toppings_2",
+                  "name": "Black olives",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "veg_toppings_3",
+                  "name": "Mushrooms",
+                  "priceDelta": 50
+                },
+                {
+                  "id": "veg_toppings_4",
+                  "name": "Sun-dried tomatoes",
+                  "priceDelta": 55
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "napoli-woodfire-02",
+          "name": "Farmhouse Garden",
+          "description": "Bell peppers, mushrooms, sweet corn, red onion and mozzarella.",
+          "price": 379,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍄",
+          "customizations": [
+            {
+              "id": "size",
+              "title": "Choose size",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "size_0",
+                  "name": "Regular 8\"",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "size_1",
+                  "name": "Medium 10\"",
+                  "priceDelta": 150
+                },
+                {
+                  "id": "size_2",
+                  "name": "Large 12\"",
+                  "priceDelta": 280
+                }
+              ]
+            },
+            {
+              "id": "veg_toppings",
+              "title": "Extra toppings (up to 4)",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "veg_toppings_0",
+                  "name": "Extra mozzarella",
+                  "priceDelta": 60
+                },
+                {
+                  "id": "veg_toppings_1",
+                  "name": "Jalapeños",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "veg_toppings_2",
+                  "name": "Black olives",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "veg_toppings_3",
+                  "name": "Mushrooms",
+                  "priceDelta": 50
+                },
+                {
+                  "id": "veg_toppings_4",
+                  "name": "Sun-dried tomatoes",
+                  "priceDelta": 55
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "napoli-woodfire-03",
+          "name": "Paneer Tikka Pizza",
+          "description": "Tandoori paneer, onions and capsicum with mint mayo drizzle.",
+          "price": 399,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🧀",
+          "customizations": [
+            {
+              "id": "size",
+              "title": "Choose size",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "size_0",
+                  "name": "Regular 8\"",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "size_1",
+                  "name": "Medium 10\"",
+                  "priceDelta": 150
+                },
+                {
+                  "id": "size_2",
+                  "name": "Large 12\"",
+                  "priceDelta": 280
+                }
+              ]
+            },
+            {
+              "id": "veg_toppings",
+              "title": "Extra toppings (up to 4)",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "veg_toppings_0",
+                  "name": "Extra mozzarella",
+                  "priceDelta": 60
+                },
+                {
+                  "id": "veg_toppings_1",
+                  "name": "Jalapeños",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "veg_toppings_2",
+                  "name": "Black olives",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "veg_toppings_3",
+                  "name": "Mushrooms",
+                  "priceDelta": 50
+                },
+                {
+                  "id": "veg_toppings_4",
+                  "name": "Sun-dried tomatoes",
+                  "priceDelta": 55
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "napoli-woodfire-04",
+          "name": "Quattro Formaggi",
+          "description": "Mozzarella, gorgonzola, parmesan and smoked provolone.",
+          "price": 449,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🧀",
+          "customizations": [
+            {
+              "id": "size",
+              "title": "Choose size",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "size_0",
+                  "name": "Regular 8\"",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "size_1",
+                  "name": "Medium 10\"",
+                  "priceDelta": 150
+                },
+                {
+                  "id": "size_2",
+                  "name": "Large 12\"",
+                  "priceDelta": 280
+                }
+              ]
+            },
+            {
+              "id": "veg_toppings",
+              "title": "Extra toppings (up to 4)",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "veg_toppings_0",
+                  "name": "Extra mozzarella",
+                  "priceDelta": 60
+                },
+                {
+                  "id": "veg_toppings_1",
+                  "name": "Jalapeños",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "veg_toppings_2",
+                  "name": "Black olives",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "veg_toppings_3",
+                  "name": "Mushrooms",
+                  "priceDelta": 50
+                },
+                {
+                  "id": "veg_toppings_4",
+                  "name": "Sun-dried tomatoes",
+                  "priceDelta": 55
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "napoli-woodfire-05",
+          "name": "Pepperoni Picante",
+          "description": "Spicy chicken pepperoni, mozzarella and chilli honey.",
+          "price": 469,
+          "isVeg": false,
+          "isBestseller": true,
+          "emoji": "🍕",
+          "customizations": [
+            {
+              "id": "size",
+              "title": "Choose size",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "size_0",
+                  "name": "Regular 8\"",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "size_1",
+                  "name": "Medium 10\"",
+                  "priceDelta": 160
+                },
+                {
+                  "id": "size_2",
+                  "name": "Large 12\"",
+                  "priceDelta": 300
+                }
+              ]
+            },
+            {
+              "id": "nv_toppings",
+              "title": "Extra toppings (up to 4)",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "nv_toppings_0",
+                  "name": "Extra mozzarella",
+                  "priceDelta": 60
+                },
+                {
+                  "id": "nv_toppings_1",
+                  "name": "Jalapeños",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "nv_toppings_2",
+                  "name": "Smoked chicken",
+                  "priceDelta": 90
+                },
+                {
+                  "id": "nv_toppings_3",
+                  "name": "Pepperoni",
+                  "priceDelta": 110
+                },
+                {
+                  "id": "nv_toppings_4",
+                  "name": "Caramelised onions",
+                  "priceDelta": 40
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "napoli-woodfire-06",
+          "name": "Smoked Chicken & Pesto",
+          "description": "Basil pesto base, smoked chicken, cherry tomatoes and rocket.",
+          "price": 449,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🌿",
+          "customizations": [
+            {
+              "id": "size",
+              "title": "Choose size",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "size_0",
+                  "name": "Regular 8\"",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "size_1",
+                  "name": "Medium 10\"",
+                  "priceDelta": 160
+                },
+                {
+                  "id": "size_2",
+                  "name": "Large 12\"",
+                  "priceDelta": 300
+                }
+              ]
+            },
+            {
+              "id": "nv_toppings",
+              "title": "Extra toppings (up to 4)",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "nv_toppings_0",
+                  "name": "Extra mozzarella",
+                  "priceDelta": 60
+                },
+                {
+                  "id": "nv_toppings_1",
+                  "name": "Jalapeños",
+                  "priceDelta": 40
+                },
+                {
+                  "id": "nv_toppings_2",
+                  "name": "Smoked chicken",
+                  "priceDelta": 90
+                },
+                {
+                  "id": "nv_toppings_3",
+                  "name": "Pepperoni",
+                  "priceDelta": 110
+                },
+                {
+                  "id": "nv_toppings_4",
+                  "name": "Caramelised onions",
+                  "priceDelta": 40
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pastas",
+      "items": [
+        {
+          "id": "napoli-woodfire-07",
+          "name": "Penne Arrabbiata",
+          "description": "Penne in a fiery tomato, garlic and chilli sauce.",
+          "price": 299,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍝",
+          "customizations": [
+            {
+              "id": "pasta_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "pasta_extras_0",
+                  "name": "Grilled chicken",
+                  "priceDelta": 90
+                },
+                {
+                  "id": "pasta_extras_1",
+                  "name": "Garlic prawns",
+                  "priceDelta": 140
+                },
+                {
+                  "id": "pasta_extras_2",
+                  "name": "Shaved parmesan",
+                  "priceDelta": 50
+                },
+                {
+                  "id": "pasta_extras_3",
+                  "name": "Garlic bread side",
+                  "priceDelta": 70
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "napoli-woodfire-08",
+          "name": "Spaghetti Aglio Olio",
+          "description": "Spaghetti tossed with garlic, olive oil, chilli flakes and parsley.",
+          "price": 289,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍝",
+          "customizations": [
+            {
+              "id": "pasta_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "pasta_extras_0",
+                  "name": "Grilled chicken",
+                  "priceDelta": 90
+                },
+                {
+                  "id": "pasta_extras_1",
+                  "name": "Garlic prawns",
+                  "priceDelta": 140
+                },
+                {
+                  "id": "pasta_extras_2",
+                  "name": "Shaved parmesan",
+                  "priceDelta": 50
+                },
+                {
+                  "id": "pasta_extras_3",
+                  "name": "Garlic bread side",
+                  "priceDelta": 70
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "napoli-woodfire-09",
+          "name": "Fettuccine Alfredo",
+          "description": "Silky parmesan cream sauce with cracked black pepper.",
+          "price": 329,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🍝",
+          "customizations": [
+            {
+              "id": "pasta_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "pasta_extras_0",
+                  "name": "Grilled chicken",
+                  "priceDelta": 90
+                },
+                {
+                  "id": "pasta_extras_1",
+                  "name": "Garlic prawns",
+                  "priceDelta": 140
+                },
+                {
+                  "id": "pasta_extras_2",
+                  "name": "Shaved parmesan",
+                  "priceDelta": 50
+                },
+                {
+                  "id": "pasta_extras_3",
+                  "name": "Garlic bread side",
+                  "priceDelta": 70
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "napoli-woodfire-10",
+          "name": "Chicken Pesto Penne",
+          "description": "Grilled chicken and penne in a creamy basil pesto.",
+          "price": 369,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🍝",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "id": "napoli-woodfire-11",
+          "name": "Cheesy Garlic Bread",
+          "description": "Wood-fired bread with garlic butter and molten mozzarella.",
+          "price": 169,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🥖",
+          "customizations": []
+        },
+        {
+          "id": "napoli-woodfire-12",
+          "name": "Bruschetta Pomodoro",
+          "description": "Toasted sourdough with tomato, basil and balsamic glaze.",
+          "price": 189,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍅",
+          "customizations": []
+        },
+        {
+          "id": "napoli-woodfire-13",
+          "name": "Peri Peri Potato Wedges",
+          "description": "Skin-on wedges dusted with peri peri spice and a garlic aioli.",
+          "price": 149,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥔",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Desserts & Drinks",
+      "items": [
+        {
+          "id": "napoli-woodfire-14",
+          "name": "Classic Tiramisu",
+          "description": "Espresso-soaked savoiardi layered with mascarpone cream and cocoa.",
+          "price": 249,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍰",
+          "customizations": []
+        },
+        {
+          "id": "napoli-woodfire-15",
+          "name": "Nutella Calzone",
+          "description": "Folded pizza dough stuffed with Nutella and dusted with icing sugar.",
+          "price": 229,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥟",
+          "customizations": []
+        },
+        {
+          "id": "napoli-woodfire-16",
+          "name": "Italian Lemonade",
+          "description": "Sparkling lemonade with mint and a hint of basil.",
+          "price": 119,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍋",
+          "customizations": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,538 @@
+{
+  "restaurantId": "stacked-burger-co",
+  "sections": [
+    {
+      "name": "Signature Burgers",
+      "items": [
+        {
+          "id": "stacked-burger-co-01",
+          "name": "Classic Smash Burger",
+          "description": "Two smashed chicken patties, American cheese, pickles, onions and house sauce in a toasted brioche bun.",
+          "price": 249,
+          "isVeg": false,
+          "isBestseller": true,
+          "emoji": "🍔",
+          "customizations": [
+            {
+              "id": "meal",
+              "title": "Make it a meal?",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "meal_0",
+                  "name": "Burger only",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "meal_1",
+                  "name": "Meal: fries + cold drink",
+                  "priceDelta": 119
+                },
+                {
+                  "id": "meal_2",
+                  "name": "Large meal: loaded fries + shake",
+                  "priceDelta": 199
+                }
+              ]
+            },
+            {
+              "id": "burger_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "burger_extras_0",
+                  "name": "Cheese slice",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "burger_extras_1",
+                  "name": "Extra patty",
+                  "priceDelta": 90
+                },
+                {
+                  "id": "burger_extras_2",
+                  "name": "Caramelised onions",
+                  "priceDelta": 25
+                },
+                {
+                  "id": "burger_extras_3",
+                  "name": "Jalapeños",
+                  "priceDelta": 20
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "stacked-burger-co-02",
+          "name": "Double Trouble Chicken",
+          "description": "Two crispy chicken fillets, double cheese, jalapeños and chipotle mayo.",
+          "price": 319,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🍔",
+          "customizations": [
+            {
+              "id": "meal",
+              "title": "Make it a meal?",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "meal_0",
+                  "name": "Burger only",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "meal_1",
+                  "name": "Meal: fries + cold drink",
+                  "priceDelta": 119
+                },
+                {
+                  "id": "meal_2",
+                  "name": "Large meal: loaded fries + shake",
+                  "priceDelta": 199
+                }
+              ]
+            },
+            {
+              "id": "burger_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "burger_extras_0",
+                  "name": "Cheese slice",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "burger_extras_1",
+                  "name": "Extra patty",
+                  "priceDelta": 90
+                },
+                {
+                  "id": "burger_extras_2",
+                  "name": "Caramelised onions",
+                  "priceDelta": 25
+                },
+                {
+                  "id": "burger_extras_3",
+                  "name": "Jalapeños",
+                  "priceDelta": 20
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "stacked-burger-co-03",
+          "name": "Crispy Fried Chicken Burger",
+          "description": "Buttermilk-fried chicken thigh, slaw and smoky ranch.",
+          "price": 269,
+          "isVeg": false,
+          "isBestseller": true,
+          "emoji": "🍗",
+          "customizations": [
+            {
+              "id": "meal",
+              "title": "Make it a meal?",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "meal_0",
+                  "name": "Burger only",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "meal_1",
+                  "name": "Meal: fries + cold drink",
+                  "priceDelta": 119
+                },
+                {
+                  "id": "meal_2",
+                  "name": "Large meal: loaded fries + shake",
+                  "priceDelta": 199
+                }
+              ]
+            },
+            {
+              "id": "burger_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "burger_extras_0",
+                  "name": "Cheese slice",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "burger_extras_1",
+                  "name": "Extra patty",
+                  "priceDelta": 90
+                },
+                {
+                  "id": "burger_extras_2",
+                  "name": "Caramelised onions",
+                  "priceDelta": 25
+                },
+                {
+                  "id": "burger_extras_3",
+                  "name": "Jalapeños",
+                  "priceDelta": 20
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "stacked-burger-co-04",
+          "name": "Peri Peri Chicken Burger",
+          "description": "Flame-grilled peri peri chicken with lettuce, tomato and garlic mayo.",
+          "price": 279,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🌶️",
+          "customizations": [
+            {
+              "id": "meal",
+              "title": "Make it a meal?",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "meal_0",
+                  "name": "Burger only",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "meal_1",
+                  "name": "Meal: fries + cold drink",
+                  "priceDelta": 119
+                },
+                {
+                  "id": "meal_2",
+                  "name": "Large meal: loaded fries + shake",
+                  "priceDelta": 199
+                }
+              ]
+            },
+            {
+              "id": "burger_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "burger_extras_0",
+                  "name": "Cheese slice",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "burger_extras_1",
+                  "name": "Extra patty",
+                  "priceDelta": 90
+                },
+                {
+                  "id": "burger_extras_2",
+                  "name": "Caramelised onions",
+                  "priceDelta": 25
+                },
+                {
+                  "id": "burger_extras_3",
+                  "name": "Jalapeños",
+                  "priceDelta": 20
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "stacked-burger-co-05",
+          "name": "Mushroom Swiss Burger",
+          "description": "Crumbed veg patty, sautéed garlic mushrooms and Swiss-style cheese.",
+          "price": 249,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍄",
+          "customizations": [
+            {
+              "id": "meal",
+              "title": "Make it a meal?",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "meal_0",
+                  "name": "Burger only",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "meal_1",
+                  "name": "Meal: fries + cold drink",
+                  "priceDelta": 119
+                },
+                {
+                  "id": "meal_2",
+                  "name": "Large meal: loaded fries + shake",
+                  "priceDelta": 199
+                }
+              ]
+            },
+            {
+              "id": "burger_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "burger_extras_0",
+                  "name": "Cheese slice",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "burger_extras_1",
+                  "name": "Extra patty",
+                  "priceDelta": 90
+                },
+                {
+                  "id": "burger_extras_2",
+                  "name": "Caramelised onions",
+                  "priceDelta": 25
+                },
+                {
+                  "id": "burger_extras_3",
+                  "name": "Jalapeños",
+                  "priceDelta": 20
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "stacked-burger-co-06",
+          "name": "Crunchy Veg Supreme",
+          "description": "Crispy potato and pea patty, lettuce, onions and tangy burger sauce.",
+          "price": 189,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥬",
+          "customizations": [
+            {
+              "id": "meal",
+              "title": "Make it a meal?",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "meal_0",
+                  "name": "Burger only",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "meal_1",
+                  "name": "Meal: fries + cold drink",
+                  "priceDelta": 119
+                },
+                {
+                  "id": "meal_2",
+                  "name": "Large meal: loaded fries + shake",
+                  "priceDelta": 199
+                }
+              ]
+            },
+            {
+              "id": "burger_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "burger_extras_0",
+                  "name": "Cheese slice",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "burger_extras_1",
+                  "name": "Extra patty",
+                  "priceDelta": 90
+                },
+                {
+                  "id": "burger_extras_2",
+                  "name": "Caramelised onions",
+                  "priceDelta": 25
+                },
+                {
+                  "id": "burger_extras_3",
+                  "name": "Jalapeños",
+                  "priceDelta": 20
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "stacked-burger-co-07",
+          "name": "Paneer Makhani Burger",
+          "description": "Crumb-fried paneer slab with makhani sauce and pickled onions.",
+          "price": 229,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🧀",
+          "customizations": [
+            {
+              "id": "meal",
+              "title": "Make it a meal?",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "meal_0",
+                  "name": "Burger only",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "meal_1",
+                  "name": "Meal: fries + cold drink",
+                  "priceDelta": 119
+                },
+                {
+                  "id": "meal_2",
+                  "name": "Large meal: loaded fries + shake",
+                  "priceDelta": 199
+                }
+              ]
+            },
+            {
+              "id": "burger_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 4,
+              "options": [
+                {
+                  "id": "burger_extras_0",
+                  "name": "Cheese slice",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "burger_extras_1",
+                  "name": "Extra patty",
+                  "priceDelta": 90
+                },
+                {
+                  "id": "burger_extras_2",
+                  "name": "Caramelised onions",
+                  "priceDelta": 25
+                },
+                {
+                  "id": "burger_extras_3",
+                  "name": "Jalapeños",
+                  "priceDelta": 20
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "id": "stacked-burger-co-08",
+          "name": "Classic Salted Fries",
+          "description": "Golden, skin-on fries with sea salt.",
+          "price": 109,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍟",
+          "customizations": []
+        },
+        {
+          "id": "stacked-burger-co-09",
+          "name": "Loaded Cheese Fries",
+          "description": "Fries smothered in cheddar sauce, jalapeños and spring onion.",
+          "price": 179,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🍟",
+          "customizations": []
+        },
+        {
+          "id": "stacked-burger-co-10",
+          "name": "Hot Chicken Wings (6 pcs)",
+          "description": "Crispy wings tossed in buffalo hot sauce with a blue-cheese dip.",
+          "price": 249,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🍗",
+          "customizations": []
+        },
+        {
+          "id": "stacked-burger-co-11",
+          "name": "Onion Rings",
+          "description": "Beer-batter style onion rings with smoky mayo.",
+          "price": 129,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🧅",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Shakes",
+      "items": [
+        {
+          "id": "stacked-burger-co-12",
+          "name": "Oreo Thick Shake",
+          "description": "Thick vanilla shake blended with crushed Oreo cookies.",
+          "price": 169,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🥤",
+          "customizations": []
+        },
+        {
+          "id": "stacked-burger-co-13",
+          "name": "Salted Caramel Shake",
+          "description": "Vanilla ice cream, house salted caramel and whipped cream.",
+          "price": 179,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥤",
+          "customizations": []
+        },
+        {
+          "id": "stacked-burger-co-14",
+          "name": "Classic Cold Coffee",
+          "description": "Chilled coffee blended with milk and ice cream.",
+          "price": 139,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥤",
+          "customizations": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,315 @@
+{
+  "restaurantId": "mehfil-kebabs-rolls",
+  "sections": [
+    {
+      "name": "Rolls",
+      "items": [
+        {
+          "id": "mehfil-kebabs-rolls-01",
+          "name": "Chicken Tikka Roll",
+          "description": "Smoky chicken tikka, onions and mint chutney wrapped in a flaky paratha.",
+          "price": 169,
+          "isVeg": false,
+          "isBestseller": true,
+          "emoji": "🌯",
+          "customizations": [
+            {
+              "id": "roll_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "roll_extras_0",
+                  "name": "Extra egg layer",
+                  "priceDelta": 20
+                },
+                {
+                  "id": "roll_extras_1",
+                  "name": "Extra cheese",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "roll_extras_2",
+                  "name": "Double filling",
+                  "priceDelta": 70
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mehfil-kebabs-rolls-02",
+          "name": "Mutton Seekh Roll",
+          "description": "Juicy mutton seekh kebab with pickled onions in a rumali wrap.",
+          "price": 199,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🌯",
+          "customizations": [
+            {
+              "id": "roll_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "roll_extras_0",
+                  "name": "Extra egg layer",
+                  "priceDelta": 20
+                },
+                {
+                  "id": "roll_extras_1",
+                  "name": "Extra cheese",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "roll_extras_2",
+                  "name": "Double filling",
+                  "priceDelta": 70
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mehfil-kebabs-rolls-03",
+          "name": "Egg Chicken Roll",
+          "description": "Egg-coated paratha with spicy chicken filling.",
+          "price": 179,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🌯",
+          "customizations": [
+            {
+              "id": "roll_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "roll_extras_0",
+                  "name": "Extra egg layer",
+                  "priceDelta": 20
+                },
+                {
+                  "id": "roll_extras_1",
+                  "name": "Extra cheese",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "roll_extras_2",
+                  "name": "Double filling",
+                  "priceDelta": 70
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mehfil-kebabs-rolls-04",
+          "name": "Paneer Tikka Roll",
+          "description": "Chargrilled paneer tikka with peppers and green chutney.",
+          "price": 149,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🌯",
+          "customizations": [
+            {
+              "id": "roll_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "roll_extras_0",
+                  "name": "Extra egg layer",
+                  "priceDelta": 20
+                },
+                {
+                  "id": "roll_extras_1",
+                  "name": "Extra cheese",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "roll_extras_2",
+                  "name": "Double filling",
+                  "priceDelta": 70
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mehfil-kebabs-rolls-05",
+          "name": "Double Egg Roll",
+          "description": "Paratha layered with two eggs, onions, chilli and sauces.",
+          "price": 99,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🥚",
+          "customizations": [
+            {
+              "id": "roll_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "roll_extras_0",
+                  "name": "Extra egg layer",
+                  "priceDelta": 20
+                },
+                {
+                  "id": "roll_extras_1",
+                  "name": "Extra cheese",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "roll_extras_2",
+                  "name": "Double filling",
+                  "priceDelta": 70
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mehfil-kebabs-rolls-06",
+          "name": "Aloo Tikki Roll",
+          "description": "Crisp potato tikki with chutneys and onions.",
+          "price": 99,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥔",
+          "customizations": [
+            {
+              "id": "roll_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "roll_extras_0",
+                  "name": "Extra egg layer",
+                  "priceDelta": 20
+                },
+                {
+                  "id": "roll_extras_1",
+                  "name": "Extra cheese",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "roll_extras_2",
+                  "name": "Double filling",
+                  "priceDelta": 70
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kebabs",
+      "items": [
+        {
+          "id": "mehfil-kebabs-rolls-07",
+          "name": "Chicken Malai Kebab",
+          "description": "Cream, cheese and cardamom-marinated chicken, chargrilled.",
+          "price": 289,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🍢",
+          "customizations": []
+        },
+        {
+          "id": "mehfil-kebabs-rolls-08",
+          "name": "Mutton Galouti Kebab",
+          "description": "Melt-in-the-mouth minced mutton patties on mini ulte tawa parathas.",
+          "price": 349,
+          "isVeg": false,
+          "isBestseller": true,
+          "emoji": "🥩",
+          "customizations": []
+        },
+        {
+          "id": "mehfil-kebabs-rolls-09",
+          "name": "Chicken Reshmi Kebab",
+          "description": "Silky chicken kebabs with cashew and yogurt marinade.",
+          "price": 279,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🍢",
+          "customizations": []
+        },
+        {
+          "id": "mehfil-kebabs-rolls-10",
+          "name": "Hara Bhara Kebab",
+          "description": "Spinach, peas and potato patties with mint chutney.",
+          "price": 199,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🟢",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Shawarma",
+      "items": [
+        {
+          "id": "mehfil-kebabs-rolls-11",
+          "name": "Chicken Shawarma",
+          "description": "Classic Arabic shawarma with garlic toum and pickles.",
+          "price": 139,
+          "isVeg": false,
+          "isBestseller": true,
+          "emoji": "🥙",
+          "customizations": []
+        },
+        {
+          "id": "mehfil-kebabs-rolls-12",
+          "name": "Shawarma Plate",
+          "description": "Shawarma chicken, kubus, fries, hummus and garlic sauce.",
+          "price": 229,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🍽️",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "id": "mehfil-kebabs-rolls-13",
+          "name": "Rumali Roti",
+          "description": "Paper-thin, soft handkerchief bread.",
+          "price": 30,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥙",
+          "customizations": []
+        },
+        {
+          "id": "mehfil-kebabs-rolls-14",
+          "name": "Mint Mayo Dip",
+          "description": "Cool mint and mayo dip.",
+          "price": 30,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥣",
+          "customizations": []
+        }
+      ]
+    }
+  ]
+}

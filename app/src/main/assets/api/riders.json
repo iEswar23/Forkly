@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Ravi Kumar",
+    "phone": "+91 98490 21573",
+    "vehicle": "TS 09 EK 4821",
+    "rating": 4.8,
+    "deliveries": 2140
+  },
+  {
+    "name": "Mohammed Imran",
+    "phone": "+91 99086 45120",
+    "vehicle": "TS 13 FA 7316",
+    "rating": 4.9,
+    "deliveries": 3685
+  },
+  {
+    "name": "Srinivas Goud",
+    "phone": "+91 90004 88231",
+    "vehicle": "TS 07 GH 1294",
+    "rating": 4.7,
+    "deliveries": 1528
+  },
+  {
+    "name": "Anil Yadav",
+    "phone": "+91 97010 33942",
+    "vehicle": "TS 08 EZ 5603",
+    "rating": 4.8,
+    "deliveries": 2911
+  },
+  {
+    "name": "Venkatesh Naidu",
+    "phone": "+91 91601 72458",
+    "vehicle": "TS 10 FC 8870",
+    "rating": 4.6,
+    "deliveries": 987
+  }
+]

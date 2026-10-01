@@ -1,0 +1,381 @@
+{
+  "restaurantId": "dragon-wok",
+  "sections": [
+    {
+      "name": "Soups",
+      "items": [
+        {
+          "id": "dragon-wok-01",
+          "name": "Hot & Sour Veg Soup",
+          "description": "Peppery, tangy broth with tofu, mushrooms and bamboo shoots.",
+          "price": 139,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥣",
+          "customizations": []
+        },
+        {
+          "id": "dragon-wok-02",
+          "name": "Chicken Manchow Soup",
+          "description": "Spicy dark broth with shredded chicken, topped with crispy noodles.",
+          "price": 159,
+          "isVeg": false,
+          "isBestseller": true,
+          "emoji": "🥣",
+          "customizations": []
+        },
+        {
+          "id": "dragon-wok-03",
+          "name": "Lemon Coriander Soup",
+          "description": "Light clear soup with fresh coriander and a squeeze of lemon.",
+          "price": 139,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍋",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Starters",
+      "items": [
+        {
+          "id": "dragon-wok-04",
+          "name": "Chilli Chicken (Dry)",
+          "description": "Crispy chicken tossed with green chillies, capsicum and soy.",
+          "price": 279,
+          "isVeg": false,
+          "isBestseller": true,
+          "emoji": "🌶️",
+          "customizations": []
+        },
+        {
+          "id": "dragon-wok-05",
+          "name": "Dragon Chicken",
+          "description": "Chicken strips in a sticky, fiery red chilli and cashew glaze.",
+          "price": 299,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🐉",
+          "customizations": []
+        },
+        {
+          "id": "dragon-wok-06",
+          "name": "Crispy Corn Salt & Pepper",
+          "description": "Fried sweet corn tossed with garlic, pepper and spring onion.",
+          "price": 199,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🌽",
+          "customizations": []
+        },
+        {
+          "id": "dragon-wok-07",
+          "name": "Veg Spring Rolls",
+          "description": "Crisp rolls stuffed with cabbage, carrot and glass noodles.",
+          "price": 179,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥢",
+          "customizations": []
+        },
+        {
+          "id": "dragon-wok-08",
+          "name": "Chilli Paneer",
+          "description": "Paneer cubes tossed in a spicy soy-chilli sauce with peppers.",
+          "price": 249,
+          "isVeg": true,
+          "isBestseller": true,
+          "emoji": "🧀",
+          "customizations": []
+        },
+        {
+          "id": "dragon-wok-09",
+          "name": "Prawns Salt & Pepper",
+          "description": "Crispy prawns tossed with garlic, chilli and cracked pepper.",
+          "price": 379,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🦐",
+          "customizations": []
+        }
+      ]
+    },
+    {
+      "name": "Noodles & Rice",
+      "items": [
+        {
+          "id": "dragon-wok-10",
+          "name": "Chicken Hakka Noodles",
+          "description": "Wok-tossed noodles with chicken, cabbage, carrots and spring onion.",
+          "price": 229,
+          "isVeg": false,
+          "isBestseller": true,
+          "emoji": "🍜",
+          "customizations": [
+            {
+              "id": "spice",
+              "title": "Spice level",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "spice_0",
+                  "name": "Mild",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "spice_1",
+                  "name": "Medium",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "spice_2",
+                  "name": "Fiery hot",
+                  "priceDelta": 0
+                }
+              ]
+            },
+            {
+              "id": "wok_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "wok_extras_0",
+                  "name": "Fried egg",
+                  "priceDelta": 25
+                },
+                {
+                  "id": "wok_extras_1",
+                  "name": "Extra veggies",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "wok_extras_2",
+                  "name": "Chilli garlic oil",
+                  "priceDelta": 20
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dragon-wok-11",
+          "name": "Veg Schezwan Noodles",
+          "description": "Fiery Schezwan-sauced noodles with crunchy vegetables.",
+          "price": 199,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍜",
+          "customizations": [
+            {
+              "id": "spice",
+              "title": "Spice level",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "spice_0",
+                  "name": "Mild",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "spice_1",
+                  "name": "Medium",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "spice_2",
+                  "name": "Fiery hot",
+                  "priceDelta": 0
+                }
+              ]
+            },
+            {
+              "id": "wok_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "wok_extras_0",
+                  "name": "Fried egg",
+                  "priceDelta": 25
+                },
+                {
+                  "id": "wok_extras_1",
+                  "name": "Extra veggies",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "wok_extras_2",
+                  "name": "Chilli garlic oil",
+                  "priceDelta": 20
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dragon-wok-12",
+          "name": "Veg Schezwan Fried Rice",
+          "description": "Smoky fried rice with Schezwan sauce and diced vegetables.",
+          "price": 199,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍚",
+          "customizations": [
+            {
+              "id": "spice",
+              "title": "Spice level",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "spice_0",
+                  "name": "Mild",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "spice_1",
+                  "name": "Medium",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "spice_2",
+                  "name": "Fiery hot",
+                  "priceDelta": 0
+                }
+              ]
+            },
+            {
+              "id": "wok_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "wok_extras_0",
+                  "name": "Fried egg",
+                  "priceDelta": 25
+                },
+                {
+                  "id": "wok_extras_1",
+                  "name": "Extra veggies",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "wok_extras_2",
+                  "name": "Chilli garlic oil",
+                  "priceDelta": 20
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dragon-wok-13",
+          "name": "Chicken Fried Rice",
+          "description": "Classic egg and chicken fried rice with spring onions.",
+          "price": 219,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🍚",
+          "customizations": [
+            {
+              "id": "spice",
+              "title": "Spice level",
+              "type": "SINGLE",
+              "required": true,
+              "maxSelections": 1,
+              "options": [
+                {
+                  "id": "spice_0",
+                  "name": "Mild",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "spice_1",
+                  "name": "Medium",
+                  "priceDelta": 0
+                },
+                {
+                  "id": "spice_2",
+                  "name": "Fiery hot",
+                  "priceDelta": 0
+                }
+              ]
+            },
+            {
+              "id": "wok_extras",
+              "title": "Add-ons",
+              "type": "MULTIPLE",
+              "required": false,
+              "maxSelections": 3,
+              "options": [
+                {
+                  "id": "wok_extras_0",
+                  "name": "Fried egg",
+                  "priceDelta": 25
+                },
+                {
+                  "id": "wok_extras_1",
+                  "name": "Extra veggies",
+                  "priceDelta": 30
+                },
+                {
+                  "id": "wok_extras_2",
+                  "name": "Chilli garlic oil",
+                  "priceDelta": 20
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mains & Dessert",
+      "items": [
+        {
+          "id": "dragon-wok-14",
+          "name": "Veg Manchurian Gravy",
+          "description": "Vegetable dumplings in a garlicky soy-ginger gravy.",
+          "price": 209,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🥘",
+          "customizations": []
+        },
+        {
+          "id": "dragon-wok-15",
+          "name": "Kung Pao Chicken",
+          "description": "Chicken, peanuts and dried red chillies in a sweet-spicy sauce.",
+          "price": 289,
+          "isVeg": false,
+          "isBestseller": false,
+          "emoji": "🥜",
+          "customizations": []
+        },
+        {
+          "id": "dragon-wok-16",
+          "name": "Darsaan with Ice Cream",
+          "description": "Honey-glazed fried noodles with sesame and vanilla ice cream.",
+          "price": 149,
+          "isVeg": true,
+          "isBestseller": false,
+          "emoji": "🍯",
+          "customizations": []
+        }
+      ]
+    }
+  ]
+}

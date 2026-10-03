@@ -2,6 +2,7 @@
 
 **Order from the best restaurants in Hyderabad — browse menus, customise dishes, apply coupons and track your order live.** A food ordering and delivery app built with Kotlin and Jetpack Compose. It runs fully offline against a mock backend.
 
+[![Android CI](https://github.com/iEswar23/Forkly/actions/workflows/android-ci.yml/badge.svg)](https://github.com/iEswar23/Forkly/actions/workflows/android-ci.yml)
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.0.21-7F52FF?logo=kotlin&logoColor=white)
 ![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-Material%203-4285F4?logo=jetpackcompose&logoColor=white)
 ![Architecture](https://img.shields.io/badge/Architecture-MVVM-orange)

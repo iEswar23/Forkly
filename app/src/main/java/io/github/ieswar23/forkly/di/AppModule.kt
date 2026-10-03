@@ -4,7 +4,9 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import io.github.ieswar23.forkly.domain.pricing.BillSplitter
 import io.github.ieswar23.forkly.domain.pricing.PricingCalculator
+import io.github.ieswar23.forkly.domain.scheduling.DeliverySlotPlanner
 import io.github.ieswar23.forkly.domain.tracking.OrderTracker
 import io.github.ieswar23.forkly.util.Clock
 import kotlinx.coroutines.CoroutineDispatcher
@@ -38,13 +40,27 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideClock(): Clock = Clock.System
-
-    @Provides
-    @Singleton
     fun providePricingCalculator(): PricingCalculator = PricingCalculator()
 
     @Provides
     @Singleton
+    fun provideBillSplitter(): BillSplitter = BillSplitter()
+
+    @Provides
+    @Singleton
     fun provideOrderTracker(clock: Clock): OrderTracker = OrderTracker(clock)
+
+    @Provides
+    @Singleton
+    fun provideDeliverySlotPlanner(clock: Clock): DeliverySlotPlanner = DeliverySlotPlanner(clock)
+}
+
+/** Separate from [AppModule] so tests can swap the time source alone (`@UninstallModules(ClockModule::class)`). */
+@Module
+@InstallIn(SingletonComponent::class)
+object ClockModule {
+
+    @Provides
+    @Singleton
+    fun provideClock(): Clock = Clock.System
 }

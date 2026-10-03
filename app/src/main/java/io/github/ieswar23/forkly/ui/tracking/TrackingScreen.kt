@@ -40,6 +40,7 @@ import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Call
 import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.LocationOn
+import androidx.compose.material.icons.rounded.Schedule
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material.icons.rounded.StarBorder
 import androidx.compose.material3.Card
@@ -83,6 +84,7 @@ import io.github.ieswar23.forkly.util.formatCountdown
 import io.github.ieswar23.forkly.util.formatOrderDate
 import io.github.ieswar23.forkly.util.formatRating
 import io.github.ieswar23.forkly.util.formatRupees
+import io.github.ieswar23.forkly.util.formatScheduledFor
 import io.github.ieswar23.forkly.util.formatTime
 
 @Composable
@@ -143,7 +145,10 @@ fun TrackingScreen(state: TrackingUiState, onBack: () -> Unit, onRate: (Int) -> 
                 ) {
                     item { StatusHero(order, snapshot) }
                     if (snapshot != null) {
-                        item { DeliveryMap(snapshot.status, snapshot.stageProgress, order.restaurantEmoji) }
+                        // Nothing moves on the map until a scheduled order's slot begins.
+                        if (!snapshot.isWaitingForSlot) {
+                            item { DeliveryMap(snapshot.status, snapshot.stageProgress, order.restaurantEmoji) }
+                        }
                         item { Timeline(order, snapshot) }
                     }
                     item { RiderCard(order) }
@@ -159,6 +164,13 @@ fun TrackingScreen(state: TrackingUiState, onBack: () -> Unit, onRate: (Int) -> 
                         ) {
                             Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                                 Text("Delivery details", style = MaterialTheme.typography.titleMedium)
+                                order.scheduledFor?.let { slot ->
+                                    Row(verticalAlignment = Alignment.CenterVertically) {
+                                        Icon(Icons.Rounded.Schedule, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(18.dp))
+                                        Spacer(Modifier.width(8.dp))
+                                        Text("Scheduled for ${formatScheduledFor(slot)}", style = MaterialTheme.typography.titleSmall)
+                                    }
+                                }
                                 Row(verticalAlignment = Alignment.Top) {
                                     Icon(Icons.Rounded.LocationOn, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(18.dp))
                                     Spacer(Modifier.width(8.dp))
@@ -192,6 +204,7 @@ fun TrackingScreen(state: TrackingUiState, onBack: () -> Unit, onRate: (Int) -> 
 private fun StatusHero(order: Order, snapshot: TrackingSnapshot?) {
     val status = snapshot?.status ?: order.status
     val delivered = status == OrderStatus.DELIVERED
+    val waiting = snapshot?.isWaitingForSlot == true
     val start by animateColorAsState(if (delivered) Color(0xFF15803D) else MaterialTheme.colorScheme.primary, label = "heroStart")
     val end by animateColorAsState(if (delivered) Color(0xFF4ADE80) else MaterialTheme.colorScheme.secondary, label = "heroEnd")
     val progress by animateFloatAsState(snapshot?.progress ?: 1f, tween(800), label = "heroProgress")
@@ -204,17 +217,31 @@ private fun StatusHero(order: Order, snapshot: TrackingSnapshot?) {
     ) {
         Column {
             AnimatedContent(
-                targetState = status,
+                targetState = if (waiting) null else status,
                 transitionSpec = { (slideInVertically { it } + fadeIn()) togetherWith (slideOutVertically { -it } + fadeOut()) },
                 label = "statusTitle",
             ) { current ->
                 Column {
-                    Text(current.title, style = MaterialTheme.typography.headlineSmall, color = Color.White)
-                    Text(current.subtitle, style = MaterialTheme.typography.bodyMedium, color = Color.White.copy(alpha = 0.9f))
+                    Text(current?.title ?: "Order scheduled", style = MaterialTheme.typography.headlineSmall, color = Color.White)
+                    Text(
+                        current?.subtitle ?: "The restaurant will start on it when your slot begins",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = Color.White.copy(alpha = 0.9f),
+                    )
                 }
             }
             Spacer(Modifier.height(16.dp))
-            if (!delivered && snapshot != null) {
+            if (waiting && order.scheduledFor != null) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(Icons.Rounded.Schedule, null, tint = Color.White, modifier = Modifier.size(22.dp))
+                    Spacer(Modifier.width(8.dp))
+                    Text(
+                        "Scheduled for ${formatScheduledFor(order.scheduledFor)}",
+                        style = MaterialTheme.typography.titleLarge,
+                        color = Color.White,
+                    )
+                }
+            } else if (!delivered && snapshot != null) {
                 Row(verticalAlignment = Alignment.Bottom) {
                     Text("Arriving in", style = MaterialTheme.typography.titleSmall, color = Color.White.copy(alpha = 0.85f))
                     Spacer(Modifier.width(8.dp))
@@ -255,9 +282,11 @@ private fun Timeline(order: Order, snapshot: TrackingSnapshot) {
             Text("Order status", style = MaterialTheme.typography.titleMedium)
             Spacer(Modifier.height(12.dp))
             // Live orders follow the tracker's clock; older orders are scaled to their real delivery time.
+            // A scheduled order's timeline starts with its slot rather than when it was placed.
+            val start = order.trackingStartsAt
             val trackedTotal = snapshot.stageStartedAt[OrderStatus.DELIVERED]
             val scale = if (order.deliveredAt != null && trackedTotal != null && trackedTotal > 0) {
-                (order.deliveredAt - order.placedAt).toDouble() / trackedTotal
+                (order.deliveredAt - start).toDouble() / trackedTotal
             } else {
                 1.0
             }
@@ -267,7 +296,10 @@ private fun Timeline(order: Order, snapshot: TrackingSnapshot) {
                     step = step,
                     isDone = snapshot.status > step || snapshot.status == OrderStatus.DELIVERED,
                     isCurrent = snapshot.status == step && step != OrderStatus.DELIVERED,
-                    time = reachedAt?.let { formatTime(order.placedAt + it) },
+                    time = when {
+                        step == OrderStatus.PLACED -> formatTime(order.placedAt)
+                        else -> reachedAt?.let { formatTime(start + it) }
+                    },
                     isLast = index == OrderStatus.entries.lastIndex,
                 )
             }

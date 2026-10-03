@@ -31,6 +31,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.Apartment
+import androidx.compose.material.icons.rounded.Bolt
 import androidx.compose.material.icons.rounded.CreditCard
 import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material.icons.rounded.Home
@@ -39,6 +40,7 @@ import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material.icons.rounded.Payments
 import androidx.compose.material.icons.rounded.Place
 import androidx.compose.material.icons.rounded.QrCode2
+import androidx.compose.material.icons.rounded.Schedule
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -62,6 +64,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -74,10 +77,14 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.ieswar23.forkly.domain.model.Address
 import io.github.ieswar23.forkly.domain.model.AddressLabel
 import io.github.ieswar23.forkly.domain.model.PaymentMethod
+import io.github.ieswar23.forkly.domain.scheduling.DeliverySlot
+import io.github.ieswar23.forkly.domain.scheduling.SlotDay
 import io.github.ieswar23.forkly.ui.cart.BillDetailsCard
 import io.github.ieswar23.forkly.ui.common.EmptyState
 import io.github.ieswar23.forkly.ui.common.VegIndicator
 import io.github.ieswar23.forkly.util.formatRupees
+import io.github.ieswar23.forkly.util.formatSlotWindow
+import io.github.ieswar23.forkly.util.formatTime
 
 /** Wrapper so "add new" and "edit existing" share one sheet state. */
 private data class AddressEditRequest(val address: Address?)
@@ -118,6 +125,7 @@ fun CheckoutRoute(
                 PlaceOrderBar(
                     totalPaise = state.bill.totalPaise,
                     method = state.form.paymentMethod,
+                    deliveryLabel = state.selectedSlot?.let { "${it.day.label}, ${formatTime(it.startMillis)}" },
                     enabled = state.canPlaceOrder,
                     onPlaceOrder = viewModel::placeOrder,
                 )
@@ -141,6 +149,9 @@ fun CheckoutRoute(
                     onEditAddress = { editing = AddressEditRequest(it) },
                     onAddAddress = { editing = AddressEditRequest(null) },
                     onToggleInstruction = viewModel::toggleInstruction,
+                    onDeliverNow = viewModel::deliverNow,
+                    onSchedule = viewModel::schedule,
+                    onSelectSlot = viewModel::selectSlot,
                     onSelectPayment = viewModel::selectPayment,
                     onUpiChange = viewModel::updateUpiId,
                 )
@@ -187,6 +198,9 @@ private fun CheckoutContent(
     onEditAddress: (Address) -> Unit,
     onAddAddress: () -> Unit,
     onToggleInstruction: (String) -> Unit,
+    onDeliverNow: () -> Unit,
+    onSchedule: () -> Unit,
+    onSelectSlot: (Long) -> Unit,
     onSelectPayment: (PaymentMethod) -> Unit,
     onUpiChange: (String) -> Unit,
 ) {
@@ -225,7 +239,16 @@ private fun CheckoutContent(
                 }
             }
         }
-        item { StepTitle("2", "Payment method") }
+        item { StepTitle("2", "Delivery time") }
+        item {
+            DeliveryTimeSection(
+                state = state,
+                onDeliverNow = onDeliverNow,
+                onSchedule = onSchedule,
+                onSelectSlot = onSelectSlot,
+            )
+        }
+        item { StepTitle("3", "Payment method") }
         items(PaymentMethod.entries, key = { it.name }) { method ->
             PaymentOptionCard(
                 method = method,
@@ -236,7 +259,7 @@ private fun CheckoutContent(
                 onUpiChange = onUpiChange,
             )
         }
-        item { StepTitle("3", "Order summary") }
+        item { StepTitle("4", "Order summary") }
         item {
             Card(
                 shape = MaterialTheme.shapes.large,
@@ -292,6 +315,195 @@ private fun StepTitle(number: String, title: String) {
         }
         Spacer(Modifier.width(10.dp))
         Text(title, style = MaterialTheme.typography.titleLarge)
+    }
+}
+
+@Composable
+private fun DeliveryTimeSection(
+    state: CheckoutUiState,
+    onDeliverNow: () -> Unit,
+    onSchedule: () -> Unit,
+    onSelectSlot: (Long) -> Unit,
+) {
+    val scheduling = state.form.deliveryTiming == DeliveryTiming.SCHEDULED
+    val eta = state.cart.restaurant?.deliveryTimeMins
+    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+            TimingOptionCard(
+                icon = Icons.Rounded.Bolt,
+                title = "Deliver now",
+                subtitle = eta?.let { "Arrives in $it–${it + 5} mins" } ?: "As soon as possible",
+                selected = !scheduling,
+                enabled = true,
+                onClick = onDeliverNow,
+                modifier = Modifier.weight(1f),
+            )
+            TimingOptionCard(
+                icon = Icons.Rounded.Schedule,
+                title = "Schedule",
+                subtitle = if (state.canSchedule) "Today or tomorrow" else "No slots available",
+                selected = scheduling,
+                enabled = state.canSchedule,
+                onClick = onSchedule,
+                modifier = Modifier.weight(1f),
+            )
+        }
+        AnimatedVisibility(
+            visible = scheduling && state.canSchedule,
+            enter = expandVertically() + fadeIn(),
+            exit = shrinkVertically() + fadeOut(),
+        ) {
+            SlotPicker(
+                slots = state.slots,
+                selected = state.selectedSlot,
+                openHours = state.cart.restaurant?.openHours,
+                onSelect = onSelectSlot,
+            )
+        }
+    }
+}
+
+@Composable
+private fun TimingOptionCard(
+    icon: ImageVector,
+    title: String,
+    subtitle: String,
+    selected: Boolean,
+    enabled: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Card(
+        onClick = onClick,
+        enabled = enabled,
+        modifier = modifier,
+        shape = MaterialTheme.shapes.medium,
+        colors = CardDefaults.cardColors(
+            containerColor = if (selected) MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.45f) else MaterialTheme.colorScheme.surface,
+            disabledContainerColor = MaterialTheme.colorScheme.surface,
+        ),
+        border = BorderStroke(
+            if (selected) 2.dp else 1.dp,
+            if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outlineVariant,
+        ),
+    ) {
+        Row(Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+            Icon(
+                icon,
+                null,
+                tint = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.size(22.dp),
+            )
+            Spacer(Modifier.width(10.dp))
+            Column {
+                Text(title, style = MaterialTheme.typography.titleSmall)
+                Text(
+                    subtitle,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
+        }
+    }
+}
+
+private const val COLLAPSED_SLOT_COUNT = 9
+private const val SLOTS_PER_ROW = 3
+
+@Composable
+private fun SlotPicker(
+    slots: List<DeliverySlot>,
+    selected: DeliverySlot?,
+    openHours: String?,
+    onSelect: (Long) -> Unit,
+) {
+    val days = slots.map { it.day }.distinct()
+    var pickedDay by rememberSaveable { mutableStateOf(selected?.day ?: SlotDay.TODAY) }
+    var showAll by rememberSaveable { mutableStateOf(false) }
+    // Today's slots can run out while the screen is open, and the picker keeps composing while it
+    // animates away after the last slot has gone.
+    val day = if (pickedDay in days) pickedDay else days.firstOrNull() ?: return
+    val daySlots = slots.filter { it.day == day }
+    val selectedIndex = daySlots.indexOfFirst { it == selected }
+    // Only worth collapsing when it hides more than one row, and never when it would hide the pick.
+    val collapsible = daySlots.size > COLLAPSED_SLOT_COUNT + SLOTS_PER_ROW && selectedIndex < COLLAPSED_SLOT_COUNT
+    val visible = if (collapsible && !showAll) daySlots.take(COLLAPSED_SLOT_COUNT) else daySlots
+
+    Card(
+        shape = MaterialTheme.shapes.large,
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+    ) {
+        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                days.forEach { option ->
+                    FilterChip(
+                        selected = option == day,
+                        onClick = { pickedDay = option },
+                        label = { Text("${option.label} (${slots.count { it.day == option }})") },
+                    )
+                }
+            }
+            Text(
+                (if (openHours.isNullOrBlank()) "" else "Open $openHours • ") + "30-min slots, at least 45 mins ahead",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Spacer(Modifier.height(2.dp))
+            visible.chunked(SLOTS_PER_ROW).forEach { row ->
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    row.forEach { slot ->
+                        SlotChip(
+                            label = formatTime(slot.startMillis),
+                            selected = slot == selected,
+                            onClick = { onSelect(slot.startMillis) },
+                            modifier = Modifier.weight(1f),
+                        )
+                    }
+                    repeat(SLOTS_PER_ROW - row.size) { Spacer(Modifier.weight(1f)) }
+                }
+            }
+            if (collapsible) {
+                TextButton(onClick = { showAll = !showAll }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
+                    Text(if (showAll) "Show fewer slots" else "Show all ${daySlots.size} slots")
+                }
+            }
+            if (selected != null) {
+                Row(
+                    Modifier
+                        .fillMaxWidth()
+                        .background(MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.6f), RoundedCornerShape(10.dp))
+                        .padding(horizontal = 12.dp, vertical = 10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Icon(Icons.Rounded.Schedule, null, tint = MaterialTheme.colorScheme.onSecondaryContainer, modifier = Modifier.size(18.dp))
+                    Spacer(Modifier.width(8.dp))
+                    Text(
+                        "Arriving ${selected.day.label.lowercase()}, ${formatSlotWindow(selected.startMillis, selected.endMillis)}",
+                        style = MaterialTheme.typography.titleSmall,
+                        color = MaterialTheme.colorScheme.onSecondaryContainer,
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun SlotChip(label: String, selected: Boolean, onClick: () -> Unit, modifier: Modifier = Modifier) {
+    Surface(
+        onClick = onClick,
+        selected = selected,
+        modifier = modifier.height(42.dp),
+        shape = RoundedCornerShape(10.dp),
+        color = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surface,
+        contentColor = if (selected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurface,
+        border = if (selected) null else BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
+    ) {
+        Box(contentAlignment = Alignment.Center) {
+            Text(label, style = MaterialTheme.typography.labelLarge, maxLines = 1)
+        }
     }
 }
 
@@ -430,7 +642,13 @@ private fun SavedCardPreview() {
 }
 
 @Composable
-private fun PlaceOrderBar(totalPaise: Long, method: PaymentMethod, enabled: Boolean, onPlaceOrder: () -> Unit) {
+private fun PlaceOrderBar(
+    totalPaise: Long,
+    method: PaymentMethod,
+    deliveryLabel: String?,
+    enabled: Boolean,
+    onPlaceOrder: () -> Unit,
+) {
     Surface(shadowElevation = 12.dp, color = MaterialTheme.colorScheme.surface) {
         Row(
             Modifier
@@ -443,7 +661,13 @@ private fun PlaceOrderBar(totalPaise: Long, method: PaymentMethod, enabled: Bool
                 AnimatedContent(targetState = totalPaise, label = "checkoutTotal") { total ->
                     Text(formatRupees(total), style = MaterialTheme.typography.titleLarge)
                 }
-                Text("via ${method.title}", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text(
+                    "via ${method.title}" + (deliveryLabel?.let { " • $it" } ?: ""),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
             }
             Button(
                 onClick = onPlaceOrder,

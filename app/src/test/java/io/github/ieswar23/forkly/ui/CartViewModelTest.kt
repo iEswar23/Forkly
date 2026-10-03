@@ -9,6 +9,7 @@ import io.github.ieswar23.forkly.domain.model.OrderItem
 import io.github.ieswar23.forkly.domain.model.OrderStatus
 import io.github.ieswar23.forkly.domain.model.PaymentMethod
 import io.github.ieswar23.forkly.domain.model.Rider
+import io.github.ieswar23.forkly.domain.pricing.BillSplitter
 import io.github.ieswar23.forkly.domain.pricing.PricingCalculator
 import io.github.ieswar23.forkly.fakes.FakeAddressRepository
 import io.github.ieswar23.forkly.fakes.FakeCartRepository
@@ -52,6 +53,7 @@ class CartViewModelTest {
             restaurantRepository = restaurantRepository,
             addressRepository = FakeAddressRepository(),
             pricing = PricingCalculator(),
+            billSplitter = BillSplitter(),
             clock = Clock { now++ },
         )
         val events = mutableListOf<CartEvent>()
@@ -278,6 +280,82 @@ class CartViewModelTest {
         assertThat(line.unitPricePaise).isEqualTo(329_00) // today's price, not the old ₹299
         assertThat(events.filterIsInstance<CartEvent.Reordered>().single())
             .isEqualTo(CartEvent.Reordered(itemsAdded = 2, itemsUnavailable = 1))
+    }
+
+    // ---- Split bill ----
+
+    @Test
+    fun `split is unavailable while the cart is empty`() = runTest {
+        val (vm, _) = createViewModel()
+        assertThat(vm.uiState.value.split).isNull()
+    }
+
+    @Test
+    fun `split defaults to two people sharing the whole bill including tip`() = runTest {
+        val (vm, _) = createViewModel()
+        vm.addItem(shahi, biryani)
+        vm.setTip(30_00)
+
+        val state = vm.uiState.value
+        val split = state.split!!
+        assertThat(split.people).isEqualTo(2)
+        assertThat(split.splitTip).isTrue()
+        assertThat(split.totalPaise).isEqualTo(state.bill.totalPaise)
+        assertThat(split.shares.sumOf { it.amountPaise }).isEqualTo(state.bill.totalPaise)
+    }
+
+    @Test
+    fun `people stepper is clamped to 2 through 10`() = runTest {
+        val (vm, _) = createViewModel()
+        vm.addItem(shahi, biryani)
+
+        vm.removeSplitPerson()
+        assertThat(vm.uiState.value.split!!.people).isEqualTo(2)
+
+        repeat(12) { vm.addSplitPerson() }
+        assertThat(vm.uiState.value.split!!.people).isEqualTo(10)
+        assertThat(vm.uiState.value.split!!.shares).hasSize(10)
+
+        vm.setSplitPeople(0)
+        assertThat(vm.uiState.value.split!!.people).isEqualTo(2)
+        vm.setSplitPeople(4)
+        assertThat(vm.uiState.value.split!!.people).isEqualTo(4)
+    }
+
+    @Test
+    fun `orderer covers the tip when it is not split`() = runTest {
+        val (vm, _) = createViewModel()
+        vm.addItem(shahi, biryani)
+        vm.setTip(50_00)
+        vm.setSplitPeople(3)
+        val tipSplit = vm.uiState.value.split!!
+
+        vm.setSplitTip(false)
+
+        val split = vm.uiState.value.split!!
+        val total = vm.uiState.value.bill.totalPaise
+        assertThat(split.splitTip).isFalse()
+        assertThat(split.shares.first().tipCoveredPaise).isEqualTo(50_00)
+        assertThat(split.shares.drop(1).map { it.tipCoveredPaise }).containsExactly(0L, 0L)
+        assertThat(split.shares.last().amountPaise).isLessThan(tipSplit.shares.last().amountPaise)
+        assertThat(split.shares.sumOf { it.amountPaise }).isEqualTo(total)
+    }
+
+    @Test
+    fun `split follows the bill as the cart and coupon change`() = runTest {
+        val (vm, _) = createViewModel()
+        vm.addItem(shahi, biryani)
+        vm.setSplitPeople(4)
+        val before = vm.uiState.value.split!!.totalPaise
+
+        vm.addItem(shahi, kebab)
+        vm.applyCoupon("WELCOME50")
+
+        val state = vm.uiState.value
+        assertThat(state.split!!.people).isEqualTo(4) // settings survive cart changes
+        assertThat(state.split!!.totalPaise).isEqualTo(state.bill.totalPaise)
+        assertThat(state.split!!.totalPaise).isNotEqualTo(before)
+        assertThat(state.split!!.shares.sumOf { it.amountPaise }).isEqualTo(state.bill.totalPaise)
     }
 
     private fun pastOrder(vararg items: OrderItem) = Order(

@@ -12,6 +12,9 @@ import io.github.ieswar23.forkly.domain.model.Cart
 import io.github.ieswar23.forkly.domain.model.PaymentMethod
 import io.github.ieswar23.forkly.domain.model.PlaceOrderRequest
 import io.github.ieswar23.forkly.domain.pricing.PricingCalculator
+import io.github.ieswar23.forkly.domain.scheduling.DeliverySlot
+import io.github.ieswar23.forkly.domain.scheduling.DeliverySlotPlanner
+import io.github.ieswar23.forkly.domain.scheduling.OpeningHours
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -27,7 +30,12 @@ import javax.inject.Inject
 
 val DeliveryInstructionOptions = listOf("Leave at the door", "Avoid calling", "Don't ring the bell", "Leave with security")
 
+enum class DeliveryTiming { NOW, SCHEDULED }
+
 data class CheckoutForm(
+    val deliveryTiming: DeliveryTiming = DeliveryTiming.NOW,
+    /** Start of the picked slot while [deliveryTiming] is [DeliveryTiming.SCHEDULED]. */
+    val selectedSlotStart: Long? = null,
     val paymentMethod: PaymentMethod = PaymentMethod.UPI,
     val upiId: String = "aarav.reddy@okaxis",
     val instructions: Set<String> = emptySet(),
@@ -48,10 +56,18 @@ data class CheckoutUiState(
     val addresses: List<Address> = emptyList(),
     val selectedAddress: Address? = null,
     val form: CheckoutForm = CheckoutForm(),
+    /** Bookable slots for the rest of today and tomorrow, within the restaurant's hours. */
+    val slots: List<DeliverySlot> = emptyList(),
 ) {
+    val selectedSlot: DeliverySlot?
+        get() = if (form.deliveryTiming == DeliveryTiming.SCHEDULED) slots.firstOrNull { it.startMillis == form.selectedSlotStart } else null
+
+    val canSchedule: Boolean get() = slots.isNotEmpty()
+
     val canPlaceOrder: Boolean
         get() = !cart.isEmpty && selectedAddress != null && !form.isPlacing &&
-            (form.paymentMethod != PaymentMethod.UPI || form.isUpiValid)
+            (form.paymentMethod != PaymentMethod.UPI || form.isUpiValid) &&
+            (form.deliveryTiming == DeliveryTiming.NOW || selectedSlot != null)
 }
 
 sealed interface CheckoutEvent {
@@ -64,9 +80,13 @@ class CheckoutViewModel @Inject constructor(
     private val addressRepository: AddressRepository,
     private val orderRepository: OrderRepository,
     private val pricing: PricingCalculator,
+    private val slotPlanner: DeliverySlotPlanner,
 ) : ViewModel() {
 
     private val form = MutableStateFlow(CheckoutForm())
+
+    /** Bumped to recompute slots against the current time (slots go stale as the clock moves on). */
+    private val slotsVersion = MutableStateFlow(0)
     private val _events = Channel<CheckoutEvent>(Channel.BUFFERED)
     val events: Flow<CheckoutEvent> = _events.receiveAsFlow()
 
@@ -75,15 +95,38 @@ class CheckoutViewModel @Inject constructor(
         addressRepository.addresses,
         addressRepository.selectedAddress,
         form,
-    ) { cart, addresses, selected, form ->
+        slotsVersion,
+    ) { cart, addresses, selected, form, _ ->
         CheckoutUiState(
             cart = cart,
             bill = pricing.calculate(cart.lines, cart.restaurant?.distanceKm ?: 0.0, cart.couponCode, cart.tipPaise),
             addresses = addresses,
             selectedAddress = selected,
             form = form,
+            slots = slotPlanner.slots(cart.restaurant?.openHours),
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), CheckoutUiState())
+
+    fun deliverNow() = form.update { it.copy(deliveryTiming = DeliveryTiming.NOW, error = null) }
+
+    /** Switches to scheduling, keeping a still-valid pick or else preselecting the earliest slot. */
+    fun schedule() {
+        val slots = slotPlanner.slots(uiState.value.cart.restaurant?.openHours)
+        slotsVersion.update { it + 1 }
+        if (slots.isEmpty()) return
+        form.update { current ->
+            val keep = slots.any { it.startMillis == current.selectedSlotStart }
+            current.copy(
+                deliveryTiming = DeliveryTiming.SCHEDULED,
+                selectedSlotStart = if (keep) current.selectedSlotStart else slots.first().startMillis,
+                error = null,
+            )
+        }
+    }
+
+    fun selectSlot(startMillis: Long) = form.update {
+        it.copy(deliveryTiming = DeliveryTiming.SCHEDULED, selectedSlotStart = startMillis, error = null)
+    }
 
     fun selectPayment(method: PaymentMethod) = form.update { it.copy(paymentMethod = method, error = null) }
 
@@ -114,6 +157,13 @@ class CheckoutViewModel @Inject constructor(
         val state = uiState.value
         val address = state.selectedAddress ?: return
         if (!state.canPlaceOrder) return
+        val scheduledFor = state.selectedSlot?.startMillis
+        // Slots are computed when the screen updates; the user may have lingered past the cut-off.
+        if (scheduledFor != null && !slotPlanner.isBookable(scheduledFor, OpeningHours.parseOrDefault(state.cart.restaurant?.openHours))) {
+            form.update { it.copy(selectedSlotStart = null, error = SLOT_EXPIRED) }
+            slotsVersion.update { it + 1 }
+            return
+        }
         viewModelScope.launch {
             val method = state.form.paymentMethod
             form.update {
@@ -137,6 +187,7 @@ class CheckoutViewModel @Inject constructor(
                     address = address,
                     paymentMethod = method,
                     deliveryInstructions = state.form.instructions.joinToString(", "),
+                    scheduledFor = scheduledFor,
                 ),
             )
             result.fold(
@@ -151,7 +202,8 @@ class CheckoutViewModel @Inject constructor(
         }
     }
 
-    private companion object {
-        const val MOCK_PAYMENT_MS = 1_200L
+    companion object {
+        private const val MOCK_PAYMENT_MS = 1_200L
+        const val SLOT_EXPIRED = "That delivery slot is no longer available. Please pick another one."
     }
 }

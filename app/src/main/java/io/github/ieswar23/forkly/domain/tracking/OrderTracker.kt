@@ -29,13 +29,20 @@ data class TrackingSnapshot(
     val progress: Float,
     /** Progress within the current stage, 0f..1f. */
     val stageProgress: Float,
-    /** Elapsed time (from placement) at which each reached stage started. */
+    /** Elapsed time (from the start of the timeline) at which each reached stage started. */
     val stageStartedAt: Map<OrderStatus, Long>,
-)
+    /** For a scheduled order whose slot hasn't arrived yet: time until the timeline starts (0 once live). */
+    val startsInMillis: Long = 0,
+) {
+    val isWaitingForSlot: Boolean get() = startsInMillis > 0
+}
 
 /**
- * Drives the live order timeline. State is a pure function of the time elapsed since the order
- * was placed, so tracking survives process death and can be resumed at any point.
+ * Drives the live order timeline. State is a pure function of the time elapsed since the timeline
+ * started, so tracking survives process death and can be resumed at any point.
+ *
+ * The timeline starts when the order is placed, or for a scheduled order when its delivery slot
+ * begins. Until then the order stays [OrderStatus.PLACED] and snapshots report [TrackingSnapshot.startsInMillis].
  */
 class OrderTracker(
     private val clock: Clock,
@@ -68,18 +75,25 @@ class OrderTracker(
             progress = elapsed.toFloat() / deliveredAt,
             stageProgress = if (stageLength == 0L) 1f else (elapsed - stageStart).toFloat() / stageLength,
             stageStartedAt = starts,
+            startsInMillis = (-elapsedMillis).coerceAtLeast(0),
         )
     }
 
+    // In the functions below `placedAt` is when the timeline starts: the placement time, or the
+    // slot start for a scheduled order (see Order.trackingStartsAt).
+
     fun statusAt(placedAt: Long): OrderStatus = snapshotAt(clock.now() - placedAt).status
 
-    /** Emits a snapshot every tick until the order is delivered, then completes. */
+    /**
+     * Emits a snapshot every tick until the order is delivered, then completes. Before a scheduled
+     * order's slot it emits one waiting snapshot and sleeps until the slot instead of ticking.
+     */
     fun track(placedAt: Long): Flow<TrackingSnapshot> = flow {
         while (true) {
             val snapshot = snapshotAt(clock.now() - placedAt)
             emit(snapshot)
             if (snapshot.status == OrderStatus.DELIVERED) break
-            delay(config.tickMillis)
+            delay(if (snapshot.isWaitingForSlot) snapshot.startsInMillis else config.tickMillis)
         }
     }
 

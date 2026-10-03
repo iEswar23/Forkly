@@ -40,7 +40,7 @@ class TrackingViewModel @Inject constructor(
         .flatMapLatest { order ->
             when {
                 order == null -> flowOf(TrackingUiState(isLoading = false))
-                order.status.isActive -> tracker.track(order.placedAt).map { TrackingUiState(false, order, it) }
+                order.status.isActive -> tracker.track(order.trackingStartsAt).map { TrackingUiState(false, order, it) }
                 else -> flowOf(TrackingUiState(false, order, tracker.snapshotAt(tracker.totalMillis)))
             }
         }

@@ -11,6 +11,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import io.github.ieswar23.forkly.data.local.ALL_MIGRATIONS
 import io.github.ieswar23.forkly.data.local.ForklyDatabase
 import io.github.ieswar23.forkly.data.local.dao.AddressDao
 import io.github.ieswar23.forkly.data.local.dao.CartDao
@@ -27,6 +28,8 @@ object DataModule {
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): ForklyDatabase =
         Room.databaseBuilder(context, ForklyDatabase::class.java, ForklyDatabase.NAME)
+            .addMigrations(*ALL_MIGRATIONS)
+            // Only for paths without a migration (e.g. a downgrade); the cache refills from the API.
             .fallbackToDestructiveMigration()
             .build()
 

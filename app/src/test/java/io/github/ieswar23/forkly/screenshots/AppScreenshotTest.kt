@@ -9,6 +9,7 @@ import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onFirst
+import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollToIndex
 import androidx.compose.ui.test.performScrollToNode
@@ -20,9 +21,11 @@ import com.github.takahirom.roborazzi.ExperimentalRoborazziApi
 import com.github.takahirom.roborazzi.RoborazziOptions
 import com.github.takahirom.roborazzi.captureRoboImage
 import com.github.takahirom.roborazzi.captureScreenRoboImage
+import dagger.hilt.android.testing.BindValue
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.HiltTestApplication
+import dagger.hilt.android.testing.UninstallModules
 import io.github.ieswar23.forkly.MainActivity
 import io.github.ieswar23.forkly.data.local.dao.OrderDao
 import io.github.ieswar23.forkly.data.repository.AddressRepository
@@ -30,10 +33,13 @@ import io.github.ieswar23.forkly.data.repository.CartRepository
 import io.github.ieswar23.forkly.data.repository.OrderRepository
 import io.github.ieswar23.forkly.data.repository.RestaurantRepository
 import io.github.ieswar23.forkly.data.repository.SeedOrders
+import io.github.ieswar23.forkly.di.ClockModule
 import io.github.ieswar23.forkly.domain.model.CartLine
 import io.github.ieswar23.forkly.domain.model.CustomizationSelection
 import io.github.ieswar23.forkly.domain.model.OrderStatus
 import io.github.ieswar23.forkly.domain.pricing.PricingCalculator
+import io.github.ieswar23.forkly.util.Clock
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
@@ -44,6 +50,7 @@ import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 import java.time.Duration
+import java.util.Calendar
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -56,6 +63,7 @@ import javax.inject.Inject
  */
 @OptIn(ExperimentalTestApi::class, ExperimentalRoborazziApi::class)
 @HiltAndroidTest
+@UninstallModules(ClockModule::class)
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @Config(application = HiltTestApplication::class, sdk = [34], qualifiers = PHONE)
@@ -66,6 +74,14 @@ class AppScreenshotTest {
 
     @get:Rule(order = 1)
     val composeRule = createAndroidComposeRule<MainActivity>()
+
+    /**
+     * Real time, but always starting at 5:40 PM today, so time-dependent screens (delivery slots)
+     * look the same whenever the screenshots are recorded.
+     */
+    @BindValue
+    @JvmField
+    val clock: Clock = clockStartingTodayAt(hour = 17, minute = 40)
 
     @Inject lateinit var restaurantRepository: RestaurantRepository
     @Inject lateinit var cartRepository: CartRepository
@@ -159,6 +175,46 @@ class AppScreenshotTest {
         capture("07_home_dark")
     }
 
+    @Test
+    fun splitBill() {
+        runBlocking { fillCart() }
+        waitForText("Top rated near you")
+        composeRule.onAllNodesWithText("Cart").onFirst().performClick()
+        waitForText("'FEAST120' applied")
+        composeRule.onNode(verticalList).performScrollToNode(hasText("Split bill"))
+        composeRule.onNodeWithText("Split bill").performClick()
+        waitForText("Each person pays")
+        repeat(2) {
+            composeRule.onNodeWithContentDescription("Add a person").performClick()
+            composeRule.waitForIdle()
+        }
+        // The orderer covers the rider tip; friends split the rest.
+        composeRule.onNodeWithText("Split the rider tip").performClick()
+        waitForText("Friend 3")
+        settle()
+        captureScreen("08_split_bill")
+    }
+
+    @Test
+    fun scheduleDelivery() {
+        runBlocking { fillCart() }
+        waitForText("Top rated near you")
+        composeRule.onAllNodesWithText("Cart").onFirst().performClick()
+        waitForText("Proceed to checkout")
+        composeRule.onNodeWithText("Proceed to checkout").performClick()
+        waitForText("Delivery time")
+        // "2 Delivery time" sits after the address cards, the add button and the instructions.
+        val deliveryTimeIndex = runBlocking { addressRepository.addresses.first().size } + 3
+        composeRule.onNode(verticalList).performScrollToIndex(deliveryTimeIndex)
+        composeRule.onNodeWithText("Schedule").performClick()
+        waitForText("7:30 PM")
+        composeRule.onNodeWithText("7:30 PM").performClick()
+        waitForText("Arriving today, 7:30 – 8:00 PM")
+        composeRule.onNode(verticalList).performScrollToIndex(deliveryTimeIndex)
+        settle()
+        capture("09_schedule_delivery")
+    }
+
     // region helpers
 
     private val verticalList = SemanticsMatcher.keyIsDefined(SemanticsProperties.VerticalScrollAxisRange)
@@ -190,7 +246,7 @@ class AppScreenshotTest {
 
     /** An order that is currently out for delivery (~75 s into the accelerated 2-minute timeline). */
     private suspend fun insertActiveOrder() {
-        val now = System.currentTimeMillis()
+        val now = clock.now()
         val (order, items) = SeedOrders.build(now, pricing).first()
         orderDao.insert(
             order.copy(
@@ -251,6 +307,17 @@ class AppScreenshotTest {
         const val OUTPUT_DIR = "../docs/screenshots"
         val OPTIONS = RoborazziOptions(recordOptions = RoborazziOptions.RecordOptions(resizeScale = 0.5))
     }
+}
+
+private fun clockStartingTodayAt(hour: Int, minute: Int): Clock {
+    val start = Calendar.getInstance().apply {
+        set(Calendar.HOUR_OF_DAY, hour)
+        set(Calendar.MINUTE, minute)
+        set(Calendar.SECOND, 0)
+        set(Calendar.MILLISECOND, 0)
+    }.timeInMillis
+    val realStart = System.currentTimeMillis()
+    return Clock { start + (System.currentTimeMillis() - realStart) }
 }
 
 /** Pixel 7-sized phone. */

@@ -61,7 +61,14 @@ data class Order(
     val deliveredAt: Long?,
     val rider: Rider,
     val userRating: Int?,
+    /** Start of the chosen delivery slot, or null for "deliver now". */
+    val scheduledFor: Long? = null,
 ) {
+    val isScheduled: Boolean get() = scheduledFor != null
+
+    /** When the live timeline starts: at placement, or when a scheduled order's slot begins. */
+    val trackingStartsAt: Long get() = scheduledFor ?: placedAt
+
     val itemCount: Int get() = items.sumOf { it.quantity }
     val itemsSummary: String get() = items.joinToString(", ") { "${it.quantity} × ${it.name}" }
 }
@@ -73,4 +80,6 @@ data class PlaceOrderRequest(
     val address: Address,
     val paymentMethod: PaymentMethod,
     val deliveryInstructions: String,
+    /** Start of the chosen delivery slot, or null to deliver now. */
+    val scheduledFor: Long? = null,
 )

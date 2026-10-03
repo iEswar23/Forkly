@@ -34,7 +34,7 @@ import io.github.ieswar23.forkly.data.local.entity.RestaurantEntity
         OrderItemEntity::class,
         AddressEntity::class,
     ],
-    version = 1,
+    version = 2,
     exportSchema = false,
 )
 @TypeConverters(Converters::class)

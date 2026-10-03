@@ -35,6 +35,8 @@ data class OrderEntity(
     val riderRating: Double,
     val riderDeliveries: Int,
     val userRating: Int?,
+    /** Added in schema version 2 (see [io.github.ieswar23.forkly.data.local.MIGRATION_1_2]). */
+    val scheduledFor: Long? = null,
 )
 
 @Entity(

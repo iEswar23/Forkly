@@ -61,6 +61,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.ieswar23.forkly.domain.model.CartLine
+import io.github.ieswar23.forkly.domain.pricing.BillSplit
 import io.github.ieswar23.forkly.ui.common.EmojiCircle
 import io.github.ieswar23.forkly.ui.common.EmojiTile
 import io.github.ieswar23.forkly.ui.common.EmptyState
@@ -82,6 +83,7 @@ fun CartRoute(
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val snackbarHostState = remember { SnackbarHostState() }
     var showCoupons by remember { mutableStateOf(false) }
+    var showSplit by remember { mutableStateOf(false) }
     var celebration by remember { mutableStateOf<CartEvent.CouponApplied?>(null) }
     var confirmClear by remember { mutableStateOf(false) }
 
@@ -157,9 +159,21 @@ fun CartRoute(
                 onOpenCoupons = { showCoupons = true },
                 onRemoveCoupon = viewModel::removeCoupon,
                 onTip = viewModel::setTip,
+                onOpenSplit = { showSplit = true },
                 onChangeAddress = onChangeAddress,
             )
         }
+    }
+
+    val split = state.split
+    if (showSplit && split != null) {
+        SplitBillSheet(
+            split = split,
+            onAddPerson = viewModel::addSplitPerson,
+            onRemovePerson = viewModel::removeSplitPerson,
+            onSplitTipChange = viewModel::setSplitTip,
+            onDismiss = { showSplit = false },
+        )
     }
 
     if (showCoupons) {
@@ -215,6 +229,7 @@ private fun CartContent(
     onOpenCoupons: () -> Unit,
     onRemoveCoupon: () -> Unit,
     onTip: (Long) -> Unit,
+    onOpenSplit: () -> Unit,
     onChangeAddress: () -> Unit,
 ) {
     val bill = state.bill
@@ -270,6 +285,9 @@ private fun CartContent(
         }
         item(key = "tip") { TipCard(selected = state.cart.tipPaise, onTip = onTip) }
         item(key = "bill") { BillDetailsCard(bill) }
+        state.split?.let { split ->
+            item(key = "split") { SplitBillRow(split, onOpen = onOpenSplit) }
+        }
         if (bill.totalSavingsPaise > 0) {
             item(key = "savings") {
                 Surface(
@@ -455,6 +473,30 @@ private fun CouponRow(state: CartUiState, onOpen: () -> Unit, onRemove: () -> Un
                 }
                 Icon(Icons.AutoMirrored.Rounded.KeyboardArrowRight, null)
             }
+        }
+    }
+}
+
+@Composable
+private fun SplitBillRow(split: BillSplit, onOpen: () -> Unit) {
+    CartCard {
+        Row(
+            Modifier.fillMaxWidth().clickable(onClick = onOpen).padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            EmojiCircle("👥", MaterialTheme.colorScheme.secondaryContainer, size = 36.dp)
+            Spacer(Modifier.width(12.dp))
+            Column(Modifier.weight(1f)) {
+                Text("Split bill", style = MaterialTheme.typography.titleSmall)
+                val friendShare = split.shares.last().amountPaise
+                val allEqual = split.shares.all { it.amountPaise == friendShare }
+                Text(
+                    "${split.people} people • ${if (allEqual) "" else "from "}${formatRupees(friendShare)} each",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+            Icon(Icons.AutoMirrored.Rounded.KeyboardArrowRight, null)
         }
     }
 }

@@ -107,4 +107,49 @@ class OrderTrackerTest {
         val snapshots = tracker().track(placedAt = 0).toList()
         assertThat(snapshots.map { it.status }).containsExactly(OrderStatus.DELIVERED)
     }
+
+    // ---- Scheduled orders ----
+
+    @Test
+    fun `before the slot the order waits as placed with no progress`() {
+        val tracker = OrderTracker(Clock { 0 }, config)
+        val snapshot = tracker.snapshotAt(-30 * 60_000L) // slot starts in 30 minutes
+
+        assertThat(snapshot.isWaitingForSlot).isTrue()
+        assertThat(snapshot.startsInMillis).isEqualTo(30 * 60_000L)
+        assertThat(snapshot.status).isEqualTo(OrderStatus.PLACED)
+        assertThat(snapshot.progress).isEqualTo(0f)
+        assertThat(snapshot.remainingMillis).isEqualTo(117_000)
+        assertThat(tracker.snapshotAt(0).isWaitingForSlot).isFalse()
+    }
+
+    @Test
+    fun `scheduled order sleeps until its slot instead of ticking, then runs the normal timeline`() = runTest {
+        val slotStart = 20 * 60_000L
+        val snapshots = tracker().track(placedAt = slotStart).toList()
+
+        // One waiting snapshot, then 118 live ticks exactly as for an order placed at the slot.
+        assertThat(snapshots).hasSize(1 + 118)
+        assertThat(snapshots.first().isWaitingForSlot).isTrue()
+        assertThat(snapshots.first().startsInMillis).isEqualTo(slotStart)
+        assertThat(snapshots.drop(1).none { it.isWaitingForSlot }).isTrue()
+        assertThat(snapshots.last().status).isEqualTo(OrderStatus.DELIVERED)
+        assertThat(testScheduler.currentTime).isEqualTo(slotStart + 117_000)
+    }
+
+    @Test
+    fun `scheduled order status stays placed until the slot begins`() = runTest {
+        val slotStart = 60 * 60_000L
+        val tracker = tracker()
+        val seen = mutableListOf<OrderStatus>()
+        val job = launch { tracker.statusChanges(placedAt = slotStart).collect { seen += it } }
+
+        advanceTimeBy(slotStart + 11_000) // 11 s into the slot: the restaurant hasn't started yet
+        assertThat(seen).containsExactly(OrderStatus.PLACED)
+        assertThat(tracker.statusAt(slotStart)).isEqualTo(OrderStatus.PLACED)
+
+        advanceTimeBy(2_000)
+        assertThat(seen.last()).isEqualTo(OrderStatus.PREPARING)
+        job.cancel()
+    }
 }

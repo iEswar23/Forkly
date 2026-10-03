@@ -2,6 +2,7 @@ package io.github.ieswar23.forkly.fakes
 
 import io.github.ieswar23.forkly.data.repository.AddressRepository
 import io.github.ieswar23.forkly.data.repository.CartRepository
+import io.github.ieswar23.forkly.data.repository.OrderRepository
 import io.github.ieswar23.forkly.data.repository.PreferencesRepository
 import io.github.ieswar23.forkly.data.repository.RestaurantRepository
 import io.github.ieswar23.forkly.domain.model.Address
@@ -12,6 +13,8 @@ import io.github.ieswar23.forkly.domain.model.Category
 import io.github.ieswar23.forkly.domain.model.DishResult
 import io.github.ieswar23.forkly.domain.model.MenuItem
 import io.github.ieswar23.forkly.domain.model.MenuSection
+import io.github.ieswar23.forkly.domain.model.Order
+import io.github.ieswar23.forkly.domain.model.PlaceOrderRequest
 import io.github.ieswar23.forkly.domain.model.Restaurant
 import io.github.ieswar23.forkly.domain.model.ThemeMode
 import io.github.ieswar23.forkly.domain.model.UserPreferences
@@ -152,4 +155,26 @@ class FakePreferencesRepository : PreferencesRepository {
     override suspend fun setOffersAndPromos(enabled: Boolean) = prefs.update { it.copy(offersAndPromos = enabled) }
     override suspend fun isHistorySeeded(): Boolean = true
     override suspend fun markHistorySeeded() = Unit
+}
+
+/** Records placed orders and serves whatever orders a test puts in [orderList]. */
+class FakeOrderRepository(initial: List<Order> = emptyList()) : OrderRepository {
+    val orderList = MutableStateFlow(initial)
+    val placed = mutableListOf<PlaceOrderRequest>()
+    var placeError: Exception? = null
+
+    override val orders: Flow<List<Order>> = orderList
+    override fun observeOrder(id: String): Flow<Order?> = orderList.map { list -> list.firstOrNull { it.id == id } }
+
+    override suspend fun placeOrder(request: PlaceOrderRequest): Result<String> {
+        placeError?.let { return Result.failure(it) }
+        placed += request
+        return Result.success("FK${10_000_000 + placed.size}")
+    }
+
+    override suspend fun rateOrder(id: String, rating: Int) =
+        orderList.update { list -> list.map { if (it.id == id) it.copy(userRating = rating) else it } }
+
+    override suspend fun resumeActiveOrders() = Unit
+    override suspend fun seedHistoryIfNeeded() = Unit
 }

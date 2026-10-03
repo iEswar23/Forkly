@@ -17,6 +17,8 @@ import io.github.ieswar23.forkly.domain.model.CustomizationSelection
 import io.github.ieswar23.forkly.domain.model.MenuItem
 import io.github.ieswar23.forkly.domain.model.Order
 import io.github.ieswar23.forkly.domain.model.Restaurant
+import io.github.ieswar23.forkly.domain.pricing.BillSplit
+import io.github.ieswar23.forkly.domain.pricing.BillSplitter
 import io.github.ieswar23.forkly.domain.pricing.CouponCatalog
 import io.github.ieswar23.forkly.domain.pricing.PricingCalculator
 import io.github.ieswar23.forkly.util.Clock
@@ -30,6 +32,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -47,6 +50,13 @@ data class CouponOption(
     val savingsPaise: Long,
 )
 
+/** What the user picked in the "Split bill" sheet. */
+data class SplitSettings(
+    val people: Int = BillSplitter.MIN_PEOPLE,
+    /** true: everyone shares the rider tip. false: the orderer pays it on top of their share. */
+    val splitTip: Boolean = true,
+)
+
 data class CartUiState(
     val isLoading: Boolean = true,
     val cart: Cart = Cart(),
@@ -54,6 +64,8 @@ data class CartUiState(
     val coupons: List<CouponOption> = emptyList(),
     val pendingReplacement: PendingReplacement? = null,
     val deliveryAddress: Address? = null,
+    /** Each person's share of [bill]; null while the cart is empty. */
+    val split: BillSplit? = null,
 )
 
 sealed interface CartEvent {
@@ -74,10 +86,12 @@ class CartViewModel @Inject constructor(
     private val restaurantRepository: RestaurantRepository,
     addressRepository: AddressRepository,
     private val pricing: PricingCalculator,
+    private val billSplitter: BillSplitter,
     private val clock: Clock,
 ) : ViewModel() {
 
     private val pendingReplacement = MutableStateFlow<PendingReplacement?>(null)
+    private val splitSettings = MutableStateFlow(SplitSettings())
     private val _events = Channel<CartEvent>(Channel.BUFFERED)
     val events: Flow<CartEvent> = _events.receiveAsFlow()
 
@@ -85,7 +99,8 @@ class CartViewModel @Inject constructor(
         cartRepository.cart,
         pendingReplacement,
         addressRepository.selectedAddress,
-    ) { cart, pending, address ->
+        splitSettings,
+    ) { cart, pending, address, settings ->
         val bill = billFor(cart)
         CartUiState(
             isLoading = false,
@@ -94,6 +109,7 @@ class CartViewModel @Inject constructor(
             coupons = couponOptions(cart, bill),
             pendingReplacement = pending,
             deliveryAddress = address,
+            split = if (cart.isEmpty) null else billSplitter.split(bill.totalPaise, bill.tipPaise, settings.people, settings.splitTip),
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), CartUiState())
 
@@ -253,6 +269,16 @@ class CartViewModel @Inject constructor(
             cartRepository.setTip(if (current == tipPaise) 0 else tipPaise)
         }
     }
+
+    // ---- Split bill ----
+
+    fun setSplitPeople(people: Int) = splitSettings.update { it.copy(people = BillSplitter.clampPeople(people)) }
+
+    fun addSplitPerson() = splitSettings.update { it.copy(people = BillSplitter.clampPeople(it.people + 1)) }
+
+    fun removeSplitPerson() = splitSettings.update { it.copy(people = BillSplitter.clampPeople(it.people - 1)) }
+
+    fun setSplitTip(split: Boolean) = splitSettings.update { it.copy(splitTip = split) }
 
     companion object {
         fun couponErrorMessage(error: CouponError): String = when (error) {

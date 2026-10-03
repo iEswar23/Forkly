@@ -11,6 +11,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,9 +19,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Schedule
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -46,6 +51,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.ieswar23.forkly.ui.theme.ForklyTheme
 import io.github.ieswar23.forkly.ui.tracking.TrackingViewModel
 import io.github.ieswar23.forkly.util.formatRupees
+import io.github.ieswar23.forkly.util.formatScheduledFor
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.cos
@@ -138,11 +144,16 @@ fun OrderSuccessRoute(
                     translationY = (1f - textAlpha.value) * 40f
                 },
             ) {
-                Text("Order placed!", style = MaterialTheme.typography.headlineMedium)
                 val order = state.order
+                Text(if (order?.isScheduled == true) "Order scheduled!" else "Order placed!", style = MaterialTheme.typography.headlineMedium)
                 Text(
                     if (order != null) {
-                        "${order.restaurantName} is confirming your order of ${order.itemCount} item${if (order.itemCount == 1) "" else "s"} (${formatRupees(order.totalPaise)})."
+                        val items = "${order.itemCount} item${if (order.itemCount == 1) "" else "s"} (${formatRupees(order.totalPaise)})"
+                        if (order.isScheduled) {
+                            "${order.restaurantName} will prepare your order of $items in time for your slot."
+                        } else {
+                            "${order.restaurantName} is confirming your order of $items."
+                        }
                     } else {
                         "Your order is confirmed."
                     },
@@ -150,6 +161,22 @@ fun OrderSuccessRoute(
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     textAlign = TextAlign.Center,
                 )
+                order?.scheduledFor?.let { slot ->
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .background(MaterialTheme.colorScheme.secondaryContainer, RoundedCornerShape(10.dp))
+                            .padding(horizontal = 12.dp, vertical = 6.dp),
+                    ) {
+                        Icon(Icons.Rounded.Schedule, null, tint = MaterialTheme.colorScheme.onSecondaryContainer, modifier = Modifier.size(18.dp))
+                        Spacer(Modifier.width(6.dp))
+                        Text(
+                            "Scheduled for ${formatScheduledFor(slot)}",
+                            style = MaterialTheme.typography.titleSmall,
+                            color = MaterialTheme.colorScheme.onSecondaryContainer,
+                        )
+                    }
+                }
                 order?.let {
                     Text(
                         "Order #${it.id}",

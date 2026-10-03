@@ -90,6 +90,8 @@ data class PlaceOrderRequestDto(
     val paymentMethod: String,
     val couponCode: String?,
     val addressId: Long,
+    /** Epoch millis of the requested delivery slot; null delivers now. */
+    val scheduledFor: Long? = null,
 )
 
 data class OrderLineDto(

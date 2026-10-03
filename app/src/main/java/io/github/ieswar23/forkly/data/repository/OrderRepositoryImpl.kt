@@ -68,6 +68,7 @@ class OrderRepositoryImpl @Inject constructor(
                     paymentMethod = request.paymentMethod.name,
                     couponCode = request.bill.appliedCoupon?.code,
                     addressId = request.address.id,
+                    scheduledFor = request.scheduledFor,
                 ),
             )
             val placedAt = clock.now()
@@ -98,10 +99,11 @@ class OrderRepositoryImpl @Inject constructor(
                 riderRating = response.rider.rating,
                 riderDeliveries = response.rider.deliveries,
                 userRating = null,
+                scheduledFor = request.scheduledFor,
             )
             orderDao.insert(order, cart.lines.map { it.toOrderItem(order.id) })
             cartDao.clearCart()
-            startTracking(order.id, placedAt)
+            startTracking(order.id, order.scheduledFor ?: placedAt)
             Result.success(order.id)
         } catch (e: CancellationException) {
             throw e
@@ -115,14 +117,15 @@ class OrderRepositoryImpl @Inject constructor(
     }
 
     override suspend fun resumeActiveOrders() = withContext(io) {
-        orderDao.getActive().forEach { startTracking(it.id, it.placedAt) }
+        orderDao.getActive().forEach { startTracking(it.id, it.scheduledFor ?: it.placedAt) }
     }
 
-    private fun startTracking(orderId: String, placedAt: Long) {
+    /** [startsAt] is the placement time, or the slot start for a scheduled order. */
+    private fun startTracking(orderId: String, startsAt: Long) {
         trackingJobs[orderId]?.takeIf { it.isActive }?.let { return }
         trackingJobs[orderId] = appScope.launch(io) {
-            tracker.statusChanges(placedAt).collect { status ->
-                val deliveredAt = if (status == OrderStatus.DELIVERED) placedAt + tracker.totalMillis else null
+            tracker.statusChanges(startsAt).collect { status ->
+                val deliveredAt = if (status == OrderStatus.DELIVERED) startsAt + tracker.totalMillis else null
                 orderDao.updateStatus(orderId, status.name, deliveredAt)
             }
             trackingJobs.remove(orderId)

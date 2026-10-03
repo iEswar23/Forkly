@@ -19,6 +19,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.DeliveryDining
 import androidx.compose.material.icons.rounded.Replay
+import androidx.compose.material.icons.rounded.Schedule
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -58,6 +59,7 @@ import io.github.ieswar23.forkly.ui.theme.ForklyTheme
 import io.github.ieswar23.forkly.util.UiState
 import io.github.ieswar23.forkly.util.formatOrderDate
 import io.github.ieswar23.forkly.util.formatRupees
+import io.github.ieswar23.forkly.util.formatScheduledFor
 
 @Composable
 fun OrdersRoute(
@@ -176,6 +178,18 @@ private fun OrderCard(order: Order, onClick: () -> Unit, onReorder: (() -> Unit)
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
             )
+            order.scheduledFor?.let { slot ->
+                Spacer(Modifier.height(6.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(Icons.Rounded.Schedule, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(16.dp))
+                    Spacer(Modifier.width(6.dp))
+                    Text(
+                        "Scheduled for ${formatScheduledFor(slot)}",
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.primary,
+                    )
+                }
+            }
             Spacer(Modifier.height(6.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(

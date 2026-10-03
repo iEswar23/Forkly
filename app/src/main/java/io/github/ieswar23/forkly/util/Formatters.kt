@@ -1,8 +1,10 @@
 package io.github.ieswar23.forkly.util
 
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+import java.util.TimeZone
 
 /** ₹249, ₹1,249 or ₹12.45 — paise are only shown when non-zero. */
 fun formatRupees(paise: Long): String {
@@ -45,3 +47,42 @@ fun formatOrderDate(epochMillis: Long): String =
 
 fun formatTime(epochMillis: Long): String =
     SimpleDateFormat("h:mm a", Locale.ENGLISH).format(Date(epochMillis))
+
+/** "7:30 – 8:00 PM", or "11:30 AM – 12:00 PM" when the window crosses noon or midnight. */
+fun formatSlotWindow(startMillis: Long, endMillis: Long, timeZone: TimeZone = TimeZone.getDefault()): String {
+    val clock = SimpleDateFormat("h:mm", Locale.ENGLISH).apply { this.timeZone = timeZone }
+    val full = SimpleDateFormat("h:mm a", Locale.ENGLISH).apply { this.timeZone = timeZone }
+    val marker = SimpleDateFormat("a", Locale.ENGLISH).apply { this.timeZone = timeZone }
+    val sameHalf = marker.format(Date(startMillis)) == marker.format(Date(endMillis))
+    val start = if (sameHalf) clock.format(Date(startMillis)) else full.format(Date(startMillis))
+    return "$start – ${full.format(Date(endMillis))}"
+}
+
+/** "Today, 7:30 PM", "Tomorrow, 9:00 AM" or "Sat, 3 Oct, 7:30 PM", relative to [now]. */
+fun formatScheduledFor(
+    epochMillis: Long,
+    now: Long = System.currentTimeMillis(),
+    timeZone: TimeZone = TimeZone.getDefault(),
+): String {
+    val time = SimpleDateFormat("h:mm a", Locale.ENGLISH).apply { this.timeZone = timeZone }.format(Date(epochMillis))
+    val day = when (daysBetween(now, epochMillis, timeZone)) {
+        0 -> "Today"
+        1 -> "Tomorrow"
+        -1 -> "Yesterday"
+        else -> SimpleDateFormat("EEE, d MMM", Locale.ENGLISH).apply { this.timeZone = timeZone }.format(Date(epochMillis))
+    }
+    return "$day, $time"
+}
+
+/** Calendar days from [from] to [to] in [timeZone] (not 24-hour periods). */
+private fun daysBetween(from: Long, to: Long, timeZone: TimeZone): Int {
+    fun dayNumber(millis: Long): Long {
+        val cal = Calendar.getInstance(timeZone).apply { timeInMillis = millis }
+        val utc = Calendar.getInstance(TimeZone.getTimeZone("UTC")).apply {
+            clear()
+            set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH))
+        }
+        return utc.timeInMillis / 86_400_000L
+    }
+    return (dayNumber(to) - dayNumber(from)).toInt()
+}

@@ -164,6 +164,7 @@ fun OrderWithItems.toDomain() = Order(
     deliveredAt = order.deliveredAt,
     rider = Rider(order.riderName, order.riderPhone, order.riderVehicle, order.riderRating, order.riderDeliveries),
     userRating = order.userRating,
+    scheduledFor = order.scheduledFor,
 )
 
 fun OrderItemEntity.toDomain() = OrderItem(
